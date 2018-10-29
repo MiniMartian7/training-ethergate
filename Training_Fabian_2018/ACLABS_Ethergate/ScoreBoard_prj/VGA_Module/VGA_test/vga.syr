@@ -1,0 +1,463 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: vga.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "vga.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "vga"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : vga
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../VGA_module.v" in library work
+Module <vga> compiled
+No errors in compilation
+Analysis of file <"vga.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <vga> in library <work> with parameters.
+	H_BP = "00000000000000000000000000110000"
+	H_FP = "00000000000000000000000000010000"
+	H_PULSE = "00000000000000000000000001100000"
+	H_SYNC = "00000000000000000000001100100000"
+	H_VIZ = "00000000000000000000001010000000"
+	V_BP = "00000000000000000000000000100001"
+	V_FP = "00000000000000000000000000001010"
+	V_PULSE = "00000000000000000000000000000010"
+	V_SYNC = "00000000000000000000001000001101"
+	V_VIZ = "00000000000000000000000111100000"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <vga>.
+	H_BP = 32'sb00000000000000000000000000110000
+	H_FP = 32'sb00000000000000000000000000010000
+	H_PULSE = 32'sb00000000000000000000000001100000
+	H_SYNC = 32'sb00000000000000000000001100100000
+	H_VIZ = 32'sb00000000000000000000001010000000
+	V_BP = 32'sb00000000000000000000000000100001
+	V_FP = 32'sb00000000000000000000000000001010
+	V_PULSE = 32'sb00000000000000000000000000000010
+	V_SYNC = 32'sb00000000000000000000001000001101
+	V_VIZ = 32'sb00000000000000000000000111100000
+Module <vga> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <vga>.
+    Related source file is "../VGA_module.v".
+    Found 2-bit register for signal <blue_b_ff>.
+    Found 1-bit register for signal <clk_25>.
+    Found 1-bit register for signal <enable_out_ff>.
+    Found 3-bit register for signal <green_b_ff>.
+    Found 10-bit adder for signal <h_cord_d$addsub0000> created at line 141.
+    Found 10-bit comparator greatequal for signal <h_cord_d$cmp_ge0000> created at line 139.
+    Found 10-bit comparator greatequal for signal <h_cord_d$cmp_ge0001> created at line 140.
+    Found 10-bit comparator less for signal <h_cord_d$cmp_lt0000> created at line 131.
+    Found 10-bit comparator less for signal <h_cord_d$cmp_lt0001> created at line 139.
+    Found 10-bit comparator less for signal <h_cord_d$cmp_lt0002> created at line 140.
+    Found 10-bit register for signal <h_cord_ff>.
+    Found 10-bit comparator less for signal <h_out_d$cmp_lt0000> created at line 122.
+    Found 1-bit register for signal <h_out_ff>.
+    Found 10-bit adder for signal <h_poz_d$addsub0000> created at line 128.
+    Found 10-bit register for signal <h_poz_ff>.
+    Found 3-bit register for signal <red_b_ff>.
+    Found 10-bit adder for signal <v_cord_d$share0000>.
+    Found 10-bit register for signal <v_cord_ff>.
+    Found 1-bit register for signal <v_out_ff>.
+    Found 10-bit adder for signal <v_poz_d$addsub0000> created at line 117.
+    Found 10-bit register for signal <v_poz_ff>.
+    Summary:
+	inferred  52 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <vga> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 4
+# Registers                                            : 11
+ 1-bit register                                        : 4
+ 10-bit register                                       : 4
+ 2-bit register                                        : 1
+ 3-bit register                                        : 2
+# Comparators                                          : 6
+ 10-bit comparator greatequal                          : 2
+ 10-bit comparator less                                : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1710 - FF/Latch <green_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <green_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <green_b_ff_2> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_2> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <blue_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <blue_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 4
+# Registers                                            : 52
+ Flip-Flops                                            : 52
+# Comparators                                          : 6
+ 10-bit comparator greatequal                          : 2
+ 10-bit comparator less                                : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <green_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <green_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <green_b_ff_2> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <red_b_ff_2> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <blue_b_ff_0> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <blue_b_ff_1> (without init value) has a constant value of 0 in block <vga>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <vga> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block vga, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 44
+ Flip-Flops                                            : 44
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : vga.ngr
+Top Level Output File Name         : vga
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 34
+
+Cell Usage :
+# BELS                             : 200
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 36
+#      LUT2                        : 12
+#      LUT3                        : 9
+#      LUT3_D                      : 2
+#      LUT3_L                      : 10
+#      LUT4                        : 41
+#      LUT4_D                      : 3
+#      LUT4_L                      : 1
+#      MUXCY                       : 36
+#      MUXF5                       : 3
+#      VCC                         : 1
+#      XORCY                       : 40
+# FlipFlops/Latches                : 44
+#      FDC                         : 44
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 33
+#      IBUF                        : 1
+#      OBUF                        : 32
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                       62  out of   4656     1%  
+ Number of Slice Flip Flops:             44  out of   9312     0%  
+ Number of 4 input LUTs:                119  out of   9312     1%  
+ Number of IOs:                          34
+ Number of bonded IOBs:                  34  out of    232    14%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 1     |
+clk_251                            | BUFG                   | 43    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | IBUF                   | 44    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 6.882ns (Maximum Frequency: 145.307MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 4.134ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 2.202ns (frequency: 454.060MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.202ns (Levels of Logic = 1)
+  Source:            clk_25 (FF)
+  Destination:       clk_25 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: clk_25 to clk_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.514   0.451  clk_25 (clk_251)
+     INV:I->O              1   0.612   0.357  clk_25_not00011_INV_0 (clk_25_not0001)
+     FDC:D                     0.268          clk_25
+    ----------------------------------------
+    Total                      2.202ns (1.394ns logic, 0.808ns route)
+                                       (63.3% logic, 36.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_251'
+  Clock period: 6.882ns (frequency: 145.307MHz)
+  Total number of paths / destination ports: 1898 / 43
+-------------------------------------------------------------------------
+Delay:               6.882ns (Levels of Logic = 5)
+  Source:            v_poz_ff_0 (FF)
+  Destination:       h_cord_ff_0 (FF)
+  Source Clock:      clk_251 rising
+  Destination Clock: clk_251 rising
+
+  Data Path: v_poz_ff_0 to h_cord_ff_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              5   0.514   0.690  v_poz_ff_0 (v_poz_ff_0)
+     LUT4:I0->O            1   0.612   0.387  h_cord_d_and000029_SW0 (N47)
+     LUT4:I2->O            2   0.612   0.383  h_cord_d_and000029 (h_cord_d_and000029)
+     LUT4:I3->O           14   0.612   0.880  h_cord_d_and000049 (h_cord_d_and0000)
+     LUT3_D:I2->O          9   0.612   0.700  h_cord_d<0>380 (N6)
+     LUT4:I3->O            1   0.612   0.000  h_cord_d<8>1 (h_cord_d<8>)
+     FDC:D                     0.268          h_cord_ff_8
+    ----------------------------------------
+    Total                      6.882ns (3.842ns logic, 3.040ns route)
+                                       (55.8% logic, 44.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              4.134ns (Levels of Logic = 1)
+  Source:            clk_25 (FF)
+  Destination:       clk_out (PAD)
+  Source Clock:      clk rising
+
+  Data Path: clk_25 to clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.514   0.451  clk_25 (clk_251)
+     OBUF:I->O                 3.169          clk_out_OBUF (clk_out)
+    ----------------------------------------
+    Total                      4.134ns (3.683ns logic, 0.451ns route)
+                                       (89.1% logic, 10.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_251'
+  Total number of paths / destination ports: 23 / 23
+-------------------------------------------------------------------------
+Offset:              4.134ns (Levels of Logic = 1)
+  Source:            v_cord_ff_9 (FF)
+  Destination:       v_cord<9> (PAD)
+  Source Clock:      clk_251 rising
+
+  Data Path: v_cord_ff_9 to v_cord<9>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.514   0.451  v_cord_ff_9 (v_cord_ff_9)
+     OBUF:I->O                 3.169          v_cord_9_OBUF (v_cord<9>)
+    ----------------------------------------
+    Total                      4.134ns (3.683ns logic, 0.451ns route)
+                                       (89.1% logic, 10.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.65 secs
+ 
+--> 
+
+Total memory usage is 252852 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

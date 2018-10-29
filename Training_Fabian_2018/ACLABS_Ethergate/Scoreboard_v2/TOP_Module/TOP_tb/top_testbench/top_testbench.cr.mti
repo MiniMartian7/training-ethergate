@@ -1,0 +1,57 @@
+C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/OUT_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/OUT_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module out
+
+Top level modules:
+	out
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/MUX_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/MUX_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mux
+
+Top level modules:
+	mux
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/CLK_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/CLK_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module clk
+
+Top level modules:
+	clk
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/VGA_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/VGA_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module vga
+
+Top level modules:
+	vga
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TOP_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TOP_tb.sv
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module top_tb
+
+Top level modules:
+	top_tb
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/MEM_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/MEM_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module mem
+
+Top level modules:
+	mem
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TOP_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TOP_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Top
+
+Top level modules:
+	Top
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TIME_module.v {1 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/Scoreboard_v2/TOP_Module/TOP_tb/TIME_module.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module timing
+
+Top level modules:
+	timing
+
+} {} {}}

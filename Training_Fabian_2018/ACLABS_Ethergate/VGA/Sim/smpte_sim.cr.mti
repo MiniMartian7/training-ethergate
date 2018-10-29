@@ -1,0 +1,20 @@
+C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/tb_smpte.sv {1 {vlog -work work -sv -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/tb_smpte.sv
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module tb_smpte
+
+Top level modules:
+	tb_smpte
+
+} {} {}} C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v {0 {vlog -work work -stats=none C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module rtl_smpte
+** Error: (vlog-13069) C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v(189): near "||": syntax error, unexpected ||.
+
+** Error: (vlog-13069) C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v(195): near "else": syntax error, unexpected else.
+
+** Error: (vlog-13069) C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v(203): near "endcase": syntax error, unexpected endcase.
+
+** Error: C:/Users/Mackintosh/Documents/ACLABS_Ethergate/VGA/rtl_bsk_v1.v(208): (vlog-13205) Syntax error found in the scope following 'green_b_d'. Is there a missing '::'?
+
+
+} {4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0} {}}

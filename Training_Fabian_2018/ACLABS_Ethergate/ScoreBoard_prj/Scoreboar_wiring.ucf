@@ -1,0 +1,16 @@
+NET "clk_top" LOC = B8;
+NET "rst_top" LOC = G18;
+
+NET "v_out" LOC = U3;
+NET "h_out" LOC = T4;
+
+NET "red_px<0>" LOC = R9;
+NET "red_px<1>" LOC = T8;
+NET "red_px<2>" LOC = R8;
+
+NET "green_px<0>" LOC = N8;
+NET "green_px<1>" LOC = P8;
+NET "green_px<2>" LOC = P6;
+
+NET "blue_px<0>" LOC = U5;
+NET "blue_px<1>" LOC = U4;

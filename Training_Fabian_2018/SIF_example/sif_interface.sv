@@ -8,20 +8,25 @@ interface sif_i(input bit clk);
         input xa_data_rd, wa_addr, wa_data_wr,
         output rst_n,
         output xa_addr, xa_data_wr,
-        output xa_wr_s, xa_rd_s, wa_wr_s//enables
+        output xa_wr_s, xa_rd_s, wa_wr_s/*enables*/
     );
 
-    modport DUT (
+    modport SIF_DUT (
         input clk, rst_n,
         input xa_addr, xa_data_wr,
-        input xa_wr_s, xa_rd_s, wa_wr_s//enables
+        input xa_wr_s, xa_rd_s, wa_wr_s/*enables*/
         output xa_data_rd, wa_addr, wa_data_wr
     );
 
-    modport MONITOR(
+    modport X_MONITOR(
         input clk, rst_n,
         input xa_addr, xa_data_wr, xa_data_rd,
-        input wa_addr, wa_data_wr,
-        input xa_wr_s, xa_rd_s, wa_wr_s//enables
+        input xa_wr_s, xa_rd_s/*enables*/
     );
-endinterface //sif_i
+
+    modport W_MONITOR(
+        input clk, rst_n;
+        input wa_addr, wa_data_wr;
+        input wa_wr_s/*enables*/
+    );
+endinterface /*sif_i*/
