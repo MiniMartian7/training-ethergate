@@ -1,24 +1,22 @@
 
 class Generator;
-    Operation op;
+    Operation op, gen2driver[$];
     int repeat_count = 'd10;
-    event ended;
+    //event generation_ended;
 
-    Queue_line gen2driver;
-
-    function new(Queue_line ev_gen2driver);
-    this.gen2driver = ev_gen2driver;
+    function new(Operation ev_gen2driver[$]);
+        gen2driver = ev_gen2driver;
     endfunction
 
     task main();
         repeat (repeat_count) begin
             op = new();
             assert (op.randomize()); 
-            else   $fatal(0, "Packet::randomize failed");
+            else   $fatal(0, "[GENERATOR]Packet::randomize failed");
 
-            op.f_display();
+            op.display();
             gen2driver.push_back(op);
         end
-        -> ended;
+        //-> generation_ended;
     endtask
 endclass //Generator
