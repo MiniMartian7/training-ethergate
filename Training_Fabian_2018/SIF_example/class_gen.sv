@@ -1,22 +1,29 @@
+`include "class_transaction.sv"
 
 class Generator;
-    Operation op, gen2driver[$];
-    int repeat_count = 'd10;
-    //event generation_ended;
+    Operation trans, gen2driver[$];
+    int repeat_count = 'd10;/*number of times to generate a new transaction/operation*/
 
-    function new(Operation ev_gen2driver[$]);
-        gen2driver = ev_gen2driver;
+    /*event generation_ended;*/
+
+    function new(Operation ev_q[$]);
+        gen2driver = ev_q;
     endfunction
 
-    task main();
-        repeat (repeat_count) begin
-            op = new();
-            assert (op.randomize()); 
-            else   $fatal(0, "[GENERATOR]Packet::randomize failed");
+    task generation();
+        $display("--@%gns [GENERATOR] Main Task--\n", $time);
 
-            op.display();
-            gen2driver.push_back(op);
+        repeat (repeat_count) begin
+            trans = new();
+
+            assert (trans.randomize()); 
+            else   $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
+
+            trans.display();
+            gen2driver.push_back(trans);
         end
-        //-> generation_ended;
+
+        $display("--@%gns [GENERATOR] End Main Task--\n", $time);
+        /*-> generation_ended;*/
     endtask
-endclass //Generator
+endclass /*Generator*/

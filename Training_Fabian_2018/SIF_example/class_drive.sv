@@ -1,21 +1,23 @@
-`define D_I v_i.DRIVER.driver_cb 
-`define M_I v_i.X_MONITOR.xmon_cb
+`include "class_transaction.sv"
+
+`define D_I driver_i.DRIVER.driver_cb 
+`define M_I driver_i.X_MONITOR.xmon_cb
 
 class driver;
-    virtual sif_i v_i;
+    virtual sif_i driver_i;
     Operation gen2driver[$];
 
     int nr_trans = 0;
 
-    function new(virtual sif_i ev_v_i, Operation ev_gen2driver[$]);
-        v_i = ev_v_i;
-        gen2driver = ev_gen2driver;
-    endfunction //new()
+    function new(virtual sif_i ev_i, Operation ev_q[$]);
+        driver_i = ev_i;
+        gen2driver = ev_q;
+    endfunction /*new()*/
 
     task reset;
-        wait(v_i.reset);
-
-        $display("---------[Driver] Reset Started----------");
+        $display("--@%gns [DRIVER] Reset Task--\n");
+        /*aici trebuie sa acceses resetul tot prin clocking block?*/
+        wait(!driver_i.rst_n);
 
         `D_I.xa_addr <= 0;
         `D_I.xa_data_wr <= 0;
@@ -23,33 +25,37 @@ class driver;
         `D_I.xa_wr_s <= 0;
         `D_I.xa_rd_s <= 0;
 
-        wait(!v_i.reset);
+        wait(driver_i.rst_n);
 
-        $display("---------[Driver] Reset Ended----------");
+        $display("--@%gns [DRIVER] End Reset Task--\n");
     endtask
 
     task drive;
+        $display("--@%gns [DRIVER] Drive Task--\n", $time);
+
         forever begin
-        Operation trans;
+            /* am nevoie tot timpul sa fac un nou handle? get_front nu imi updateaza cu noua tranzactie daca declar handle-ul pe clasa?*/
+            Operation trans;
 
-        `D_I.xa_wr_s <= 0;
-        `D_I.xa_rd_s <= 0;
-        $display("@%gns-------------------[DRIVER]Transaction number: %d-------------", $time, nr_trans);
-        gen2driver.get_front(trans);
+            /*aici nu ar fi bine sa controlez en_flags in functie de operatia generata, prin if/assert-uri?*/
 
-        `D_I.xa_data_wr = trans.wr_data;
-        `D_I.xa_addr = trans.addr;
+            `D_I.xa_wr_s <= 0;
+            `D_I.xa_rd_s <= 0;
 
-        `M_I.xa_data_rd = `D_I.xa_data_rd;
-        `M_I.xa_data_wr = trans.wr_data;
-        `M_I.xa_addr = trans.xa_addr;
-        $display("--------------[DRIVER]End Transaction-------------");
+            $display("--@%gns [DRIVER] Transaction Packet Count :: %d--\n", $time, count_trans);
 
-        nr_trans++;
+            gen2driver.get_front(trans);
 
+            `D_I.xa_data_wr = trans.wr_data;
+            `D_I.xa_addr = trans.addr;
+
+            `M_I.xa_data_rd = `D_I.xa_data_rd;
+            `M_I.xa_data_wr = trans.wr_data;
+            `M_I.xa_addr = trans.xa_addr;
+
+            nr_trans++;
         end
+
+        $display("--@%gns [DRIVER] End Drive Task--\n", $time);
     endtask
-
-
-
 endclass

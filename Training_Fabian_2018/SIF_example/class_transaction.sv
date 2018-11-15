@@ -1,5 +1,4 @@
-
-typedef enum bit [2:0] {WRITE = 'b101, READ = 'b110, IDLE = 'b100, ILLEGAL = 'b111, RESET = 'b000} e_operation;
+import library_pack::e_operation;
 
 class Operation;
     rand e_operation op;
@@ -12,11 +11,6 @@ class Operation;
     endfunction
 
     function display();
-
-      $display("--------[OPERATION]Transaction Packet Number $d :: operation-----------\n", this.nr_op);
-      $display("@%gns operation = %b\n",$time, this.op);
-      $display("@%gns data = %b :: address = %b \n", $time, this.data, this.addr);
-      $display("--------[OPERATION]Transaction Sent-----------\n");
-
+      $display("--@%gns [OPERATION] Transaction Packet Number|Data|Address :: %d|%b|%b--\n", $time, nr_op, data, addr);
     endfunction
-endclass //operation
+endclass /*operation*/
