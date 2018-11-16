@@ -1,4 +1,4 @@
-interface sif_i(input bit clk);
+interface sif_i(input bit clk, rst_n);
     logic rst_n;
     logic xa_wr_s, xa_rd_s, wa_wr_s;
     logic [15:0] xa_addr, wa_addr, xa_data_rd, xa_data_wr, wa_data_wr;

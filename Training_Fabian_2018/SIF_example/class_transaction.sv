@@ -1,7 +1,7 @@
 import library_pack::e_operation;
 
 class Operation;
-    rand e_operation op;
+    rand E_Operation op;
     rand bit [15:0] wr_data, addr;
 
     static int nr_op = 0;
