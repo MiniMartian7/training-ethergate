@@ -95,7 +95,7 @@ class driver;
             else begin
                 if(trans.op == RESET) begin
                     /*reset*/
-                    driver_i.rst_n = 0;
+                    `D_I.rst_n = 0;
                 end
             end
 

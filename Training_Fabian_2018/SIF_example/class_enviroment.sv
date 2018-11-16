@@ -2,6 +2,8 @@
 `include "class_gen.sv"
 `include "class_drive.sv"
 
+import library_pack::e_operation;
+
 class enviroment;
     Generator ev_gen;
     Driver ev_driver;

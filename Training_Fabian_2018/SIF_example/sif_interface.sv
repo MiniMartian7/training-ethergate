@@ -1,4 +1,4 @@
-interface sif_i(input bit clk, rst_n);
+interface sif_i(input bit clk);
     logic rst_n;
     logic xa_wr_s, xa_rd_s, wa_wr_s;
     logic [15:0] xa_addr, wa_addr, xa_data_rd, xa_data_wr, wa_data_wr;
@@ -16,6 +16,7 @@ interface sif_i(input bit clk, rst_n);
     clocking driver_cb @(posedge clk);
         output xa_addr, xa_data_wr;
         output xa_wr_s, xa_rd_s;
+        output rst_n;
         input xa_data_rd;
     endclocking 
 
