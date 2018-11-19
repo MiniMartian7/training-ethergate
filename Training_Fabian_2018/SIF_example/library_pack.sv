@@ -1,3 +1,3 @@
 package
-    typedef enum bit [2:0] {WRITE = 'b110, READ = 'b101, IDLE = 'b100, ILLEGAL = 'b111, RESET = 'b000} E_Operation;
+    typedef enum logic [2:0] {WRITE = 3'b110, READ = 3'b101, IDLE = 3'b100, ILLEGAL = 3'b111, RESET = 3'b000} E_Operation;
 endpackage

@@ -1,4 +1,4 @@
-import library_pack::e_operation;
+import library_pack::*;
 
 class Operation;
     rand E_Operation op;
