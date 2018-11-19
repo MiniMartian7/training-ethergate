@@ -1,4 +1,6 @@
-import library_pack::*;
+`include "library_pack.sv"
+
+import library_pack::E_Operation;
 
 class Operation;
     rand E_Operation op;

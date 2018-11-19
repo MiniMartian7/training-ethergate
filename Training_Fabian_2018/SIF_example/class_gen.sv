@@ -1,6 +1,6 @@
 `include "class_transaction.sv"
 
-class Generator;
+class Generator extend Operation;
     Operation trans, gen2driver[$];
     int repeat_count = 'd10;/*number of times to generate a new transaction/operation*/
 
