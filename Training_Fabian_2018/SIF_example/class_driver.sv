@@ -1,11 +1,12 @@
+`ifndef DRIVER
+`define DRIVER
+
 `include "class_transaction.sv"
 
 `define D_I driver_i.DRIVER.driver_cb 
 `define M_I driver_i.X_MONITOR.xmon_cb
 
-import library_pack::E_Operation;
-
-class driver;
+class Driver;
     virtual sif_i driver_i;
     Operation gen2driver[$];
 
@@ -46,14 +47,14 @@ class driver;
 
             $display("--@%gns [DRIVER] Transaction Packet Count :: %d--\n", $time, count_trans);
 
-            gen2driver.get_front(trans);
+            trans = gen2driver.pop_front();
             /*DUT*/
             `D_I.xa_addr = trans.addr;
 
             /*monitoring*/
             `M_I.xa_addr = `D_I.xa_addr;
 
-            if(trans.op == WRITE) begin
+            if(trans.op == lib_pack::WRITE) begin
                 /*enabeling*/
                 `D_I.xa_rd_s = 0;
                 `D_I.xa_wr_s = 1;
@@ -65,7 +66,7 @@ class driver;
                 `M_I.xa_data_wr = trans.wr_data;
                 `M_I.xa_data_rd = `D_I.xa_data_rd;
             end
-            else if (trans.op ==READ) begin
+            else if (trans.op == lib_pack::READ) begin
                 /*enabeling*/
                 `D_I.xa_wr_s = 0;
                 `D_I.xa_rd_s = 1;
@@ -74,7 +75,7 @@ class driver;
                 `M_I.xa_data_rd = `D_I.xa_data_rd;
                 `M_I.xa_data_wr = `D_I.xa_data_wr;
             end
-            else if (trans.op == IDLE) begin
+            else if (trans.op == lib_pack::IDLE) begin
                 /*enabeling*/
                 `D_I.xa_rd_s = 0;
                 `D_I.xa_wr_s = 0;
@@ -83,7 +84,7 @@ class driver;
                 `M_I.xa_data_rd = `D_I.xa_data_rd;
                 `M_I.xa_data_wr = `D_I.xa_data_wr;
             end
-            else if (trans.op == ILLEGAL) begin
+            else if (trans.op == lib_pack::ILLEGAL) begin
                 /*enabeling*/
                 `D_I.xa_rd_s = 1;
                 `D_I.xa_wr_s = 1;
@@ -93,7 +94,7 @@ class driver;
                 `M_I.xa_data_wr = `D_I.xa_data_wr;
             end
             else begin
-                if(trans.op == RESET) begin
+                if(trans.op == lib_pack::RESET) begin
                     /*reset*/
                     `D_I.rst_n = 0;
                 end
@@ -114,3 +115,5 @@ class driver;
         $display("--@%gns [DRIVER] End Drive Task--\n", $time);
     endtask
 endclass
+
+`endif

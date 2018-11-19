@@ -1,8 +1,9 @@
+`ifndef ENVIROMENT
+`define ENVIROMENT
+
 `include "class_transaction.sv"
 `include "class_gen.sv"
-`include "class_drive.sv"
-
-import library_pack::e_operation;
+`include "class_driver.sv"
 
 class enviroment;
     Generator ev_gen;
@@ -44,7 +45,7 @@ class enviroment;
         $display("--[ENVIROMENT] Afte Wait Task--\n");
     endtask
 
-    task run()
+    task run();
         $display("--[ENVIROMENT] Run Task--\n");
 
         pre_test();
@@ -55,3 +56,5 @@ class enviroment;
         $display("--[ENVIROMENT] End Run Task--\n");
     endtask
 endclass /*enviroment*/
+
+`endif
