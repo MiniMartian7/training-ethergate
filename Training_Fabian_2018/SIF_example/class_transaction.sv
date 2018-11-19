@@ -1,6 +1,7 @@
-`include "library_pack.sv"
+`ifndef OPERATION
+`define OPERATION
 
-import library_pack::E_Operation;
+import lib_pack::E_Operation;
 
 class Operation;
     rand E_Operation op;
@@ -12,7 +13,9 @@ class Operation;
       nr_op++;
     endfunction
 
-    function display();
+    function void display();
       $display("--@%gns [OPERATION] Transaction Packet Number|Data|Address :: %d|%b|%b--\n", $time, nr_op, data, addr);
     endfunction
 endclass /*operation*/
+
+`endif

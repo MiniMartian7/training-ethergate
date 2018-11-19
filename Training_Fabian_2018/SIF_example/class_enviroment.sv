@@ -5,7 +5,7 @@
 `include "class_gen.sv"
 `include "class_driver.sv"
 
-class enviroment;
+class Enviroment;
     Generator ev_gen;
     Driver ev_driver;
     Operation ev_q[$];

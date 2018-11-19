@@ -1,6 +1,9 @@
+`ifndef GENERATOR
+`define GENERATOR
+
 `include "class_transaction.sv"
 
-class Generator extend Operation;
+class Generator;
     Operation trans, gen2driver[$];
     int repeat_count = 'd10;/*number of times to generate a new transaction/operation*/
 
@@ -16,8 +19,7 @@ class Generator extend Operation;
         repeat (repeat_count) begin
             trans = new();
 
-            assert (trans.randomize()); 
-            else   $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
+            assert (trans.randomize()) else   $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
 
             trans.display();
             gen2driver.push_back(trans);
@@ -27,3 +29,5 @@ class Generator extend Operation;
         /*-> generation_ended;*/
     endtask
 endclass /*Generator*/
+
+`endif
