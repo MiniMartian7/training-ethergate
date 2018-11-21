@@ -55,6 +55,6 @@ class Enviroment;
 
         $display("--[ENVIROMENT] End Run Task--\n");
     endtask
-endclass /*enviroment*/
+endclass : Enviroment
 
 `endif

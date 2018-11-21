@@ -31,4 +31,4 @@ interface sif_i(input bit clk);
     modport DRIVER(
         clocking driver_cb
     );
-endinterface /*sif_i*/
+endinterface : sif_i

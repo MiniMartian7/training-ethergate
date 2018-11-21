@@ -114,6 +114,6 @@ class Driver;
 
         $display("--@%gns [DRIVER] End Drive Task--\n", $time);
     endtask
-endclass
+endclass : Driver
 
 `endif

@@ -19,7 +19,7 @@ class Generator;
         repeat (repeat_count) begin
             trans = new();
 
-            assert (trans.randomize()) else   $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
+            assert (trans.randomize()) else $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
 
             trans.display();
             gen2driver.push_back(trans);
@@ -28,6 +28,6 @@ class Generator;
         $display("--@%gns [GENERATOR] End Main Task--\n", $time);
         /*-> generation_ended;*/
     endtask
-endclass /*Generator*/
+endclass : Generator
 
 `endif
