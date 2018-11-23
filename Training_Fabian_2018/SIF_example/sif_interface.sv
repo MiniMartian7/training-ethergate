@@ -17,7 +17,6 @@ interface sif_i(input bit clk);
         output xa_addr, xa_data_wr;
         output xa_wr_s, xa_rd_s;
         output rst_n;
-        input xa_data_rd;
     endclocking 
 
     modport X_MONITOR(
@@ -31,4 +30,28 @@ interface sif_i(input bit clk);
     modport DRIVER(
         clocking driver_cb
     );
+
+    task reset();
+        driver_cb.rst_n = 0;
+
+        repeat (2) driver_cb;
+
+        driver_cb.rst_n = 1;
+    endtask
+
+    task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
+        @(driver_cb) begin
+            driver_cb.xa_addr <= sent_addr;
+            driver_cb.xa_data_wr <= sent_data;
+            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
+        end
+    endtask
+/*----------------------------------------------the read function is called from monitor
+    task read(input logic [15:0] rx_data, input logic [2:0] flags);
+        @(driver_cb) begin
+            driver_cb.xa_data_rd <= rx_data;
+            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
+        end
+    endtask*/
+
 endinterface : sif_i

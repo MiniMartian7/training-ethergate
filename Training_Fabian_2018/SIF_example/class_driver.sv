@@ -1,118 +1,48 @@
 `ifndef DRIVER
 `define DRIVER
 
-`include "class_transaction.sv"
+`define DRIVER_CB driver_i.driver_cb
 
-`define D_I driver_i.DRIVER.driver_cb 
-`define M_I driver_i.X_MONITOR.xmon_cb
+/*the include on transaction class in enviroment should make available the class also to other classes in which it is used. This depends on the compiler. 
+If not, include the class in all classes need and use ifndef and define to prevent multiple initialisations of the class*/
 
 class Driver;
+    Opertaion buffer_q;
+
     virtual sif_i driver_i;
-    Operation gen2driver[$];
 
-    int nr_trans = 0;
-
-    function new(virtual sif_i ev_i, Operation ev_q[$]);
-        driver_i = ev_i;
-        gen2driver = ev_q;
-    endfunction /*new()*/
-
-    task reset;
+    task reset();
         $display("--@%gns [DRIVER] Reset Task--\n");
-        /*aici trebuie sa acceses resetul tot prin clocking block?*/
-        wait(!driver_i.rst_n);
 
-        `D_I.xa_addr <= 0;
-        `D_I.xa_data_wr <= 0;
-        `D_I.xa_data_rd <= 0;
-        `D_I.xa_wr_s <= 0;
-        `D_I.xa_rd_s <= 0;
+        /*wait-urile se intampla deobicei in monitoare. Waitul se face ventual doar pe clocking block*/
+        /*ar fi okay as aiba si driverul resetul lui in run si dupa vine efectuarea tranzactiilor*/
 
-        wait(driver_i.rst_n);
+        /*`DRIVER_CB.xa_addr <= 0;
+        `DRIVER_CB.xa_data_wr <= 0;
+        `DRIVER_CB.xa_data_rd <= 0;
+        `DRIVER_CB.xa_wr_s <= 0;
+        `DRIVER_CB.xa_rd_s <= 0;*/
 
+        `DRIVER_CB.rst_n = 0;
+
+        repeat (2) `DRIVER_CB;
+        
+        `DRIVER_CB.rst_n = 1;
         $display("--@%gns [DRIVER] End Reset Task--\n");
     endtask
 
-    task drive;
-        $display("--@%gns [DRIVER] Drive Task--\n", $time);
+    task run(int nr_of_transactions, ref Operation ev_q[$]);
+        $display("--@%gns [DRIVER] Run Task--\n", $time);
 
-        forever begin
-            /* am nevoie tot timpul sa fac un nou handle? get_front nu imi updateaza cu noua tranzactie daca declar handle-ul pe clasa?*/
-            Operation trans;
+        while (nr_of_transactions) begin
+            buffer_q = ev_q.pop_front();
+            ev_q.delete(nr_of_transactions - 1);
+            nr_of_transactions--;
 
-            /*aici nu ar fi bine sa controlez en_flags in functie de operatia generata, prin if/assert-uri?*/
-
-            `D_I.xa_wr_s = 0;
-            `D_I.xa_rd_s = 0;
-
-            $display("--@%gns [DRIVER] Transaction Packet Count :: %d--\n", $time, count_trans);
-
-            trans = gen2driver.pop_front();
-            /*DUT*/
-            `D_I.xa_addr = trans.addr;
-
-            /*monitoring*/
-            `M_I.xa_addr = `D_I.xa_addr;
-
-            if(trans.op == lib_pack::WRITE) begin
-                /*enabeling*/
-                `D_I.xa_rd_s = 0;
-                `D_I.xa_wr_s = 1;
-
-                /*DUT*/
-                `D_I.xa_data_wr = trans.wr_data;
-
-                /*monitoring*/
-                `M_I.xa_data_wr = trans.wr_data;
-                `M_I.xa_data_rd = `D_I.xa_data_rd;
-            end
-            else if (trans.op == lib_pack::READ) begin
-                /*enabeling*/
-                `D_I.xa_wr_s = 0;
-                `D_I.xa_rd_s = 1;
-
-                /*monitoring*/
-                `M_I.xa_data_rd = `D_I.xa_data_rd;
-                `M_I.xa_data_wr = `D_I.xa_data_wr;
-            end
-            else if (trans.op == lib_pack::IDLE) begin
-                /*enabeling*/
-                `D_I.xa_rd_s = 0;
-                `D_I.xa_wr_s = 0;
-
-                /*monitoring*/
-                `M_I.xa_data_rd = `D_I.xa_data_rd;
-                `M_I.xa_data_wr = `D_I.xa_data_wr;
-            end
-            else if (trans.op == lib_pack::ILLEGAL) begin
-                /*enabeling*/
-                `D_I.xa_rd_s = 1;
-                `D_I.xa_wr_s = 1;
-
-                /*monitoring*/
-                `M_I.xa_data_rd = `D_I.xa_data_rd;
-                `M_I.xa_data_wr = `D_I.xa_data_wr;
-            end
-            else begin
-                if(trans.op == lib_pack::RESET) begin
-                    /*reset*/
-                    `D_I.rst_n = 0;
-                end
-            end
-
-            /*
-            `D_I.xa_data_wr = trans.wr_data;
-            `D_I.xa_addr = trans.addr;
-
-            `M_I.xa_data_rd = `D_I.xa_data_rd;
-            `M_I.xa_data_wr = trans.wr_data;
-            `M_I.xa_addr = trans.xa_addr;
-            */
-
-            nr_trans++;
+            driver_i.send(buffer.addr, buffer.data, buffer.op);
         end
 
-        $display("--@%gns [DRIVER] End Drive Task--\n", $time);
+        $display("--@%gns [DRIVER] End Run Task--\n", $time);
     endtask
 endclass : Driver
 
