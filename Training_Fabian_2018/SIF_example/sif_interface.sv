@@ -32,11 +32,11 @@ interface sif_i(input bit clk);
     );
 
     task reset();
-        driver_cb.rst_n = 0;
+        driver_cb.rst_n <= 0;
 
-        repeat (2) driver_cb;
+        repeat (2) @(driver_cb);
 
-        driver_cb.rst_n = 1;
+        driver_cb.rst_n <= 1;
     endtask
 
     task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);

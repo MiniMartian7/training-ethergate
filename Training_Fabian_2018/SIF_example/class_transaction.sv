@@ -1,16 +1,15 @@
 `ifndef OPERATION
 `define OPERATION
 
-import lib_pack::E_Operation;
+import lib_pack::*;
 
 class Operation;
     rand E_Operation op;
     rand bit [15:0] wr_data, addr;
 
     constraint c_op {
-      wr_data dist = {[WRITE:READ] :/ 50, [IDLE:RESET:ILLEGAL] :/ 50};
+      wr_data dist {WRITE :=35, READ := 35, IDLE := 10, RESET := 10, ILLEGAL := 10};}
       /*WRITE and READ have a probability of 25% and the rest 10%*/
-    }
 
     static int nr_op = 0;
 

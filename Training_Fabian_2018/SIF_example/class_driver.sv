@@ -3,11 +3,13 @@
 
 `define DRIVER_CB driver_i.driver_cb
 
+`include "class_gen.sv"
+
 /*the include on transaction class in enviroment should make available the class also to other classes in which it is used. This depends on the compiler. 
 If not, include the class in all classes need and use ifndef and define to prevent multiple initialisations of the class*/
 
 class Driver;
-    Opertaion buffer_q;
+    Operation buffer_q;
 
     virtual sif_i driver_i;
 
@@ -23,11 +25,11 @@ class Driver;
         `DRIVER_CB.xa_wr_s <= 0;
         `DRIVER_CB.xa_rd_s <= 0;*/
 
-        `DRIVER_CB.rst_n = 0;
+        `DRIVER_CB.rst_n <= 0;
 
-        repeat (2) `DRIVER_CB;
+        repeat (2) @(posedge `DRIVER_CB);
         
-        `DRIVER_CB.rst_n = 1;
+        `DRIVER_CB.rst_n <= 1;
         $display("--@%gns [DRIVER] End Reset Task--\n");
     endtask
 
