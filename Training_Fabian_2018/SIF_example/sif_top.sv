@@ -1,10 +1,7 @@
 `include "sif_interface.sv"
-`include "class_enviroment.sv"
 
-module top;
-    logic bit clk_top, rst_n_top;
+module top(sif_i.DUT top_sif);
+    logic bit clk_top;
 
-    sif_interface top_i(clk_top);
-    
-
+    sif SIF_DUT(top_sif);
 endmodule : top

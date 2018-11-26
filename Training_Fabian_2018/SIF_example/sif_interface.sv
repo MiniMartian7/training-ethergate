@@ -19,6 +19,16 @@ interface sif_i(input bit clk);
         output rst_n;
     endclocking 
 
+    clocking dut_cb @(posedge clk)
+        input clk, rst_n;
+
+        input xa_addr, xa_data_wr;
+        input xa_wr_s, xa_rd_s;
+
+        output xa_data_rd;
+        output wa_addr, wa_data_wr, wa_wr_s;
+    endclocking
+
     modport X_MONITOR(
         clocking xmon_cb
     );
@@ -29,6 +39,10 @@ interface sif_i(input bit clk);
 
     modport DRIVER(
         clocking driver_cb
+    );
+
+    modport DUT(
+        clocking dut_cb
     );
 
     task reset();
