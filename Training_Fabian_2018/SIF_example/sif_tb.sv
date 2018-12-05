@@ -1,14 +1,12 @@
 `include "sif_interface.sv"
 `include "class_enviroment.sv"
 
-module TB();
-    logic clk_tb = 1'b0;
-
-    initial begin
-        clk_tb = 1'b0;
-        forever being
-            #10
-            clk_tb = ~clk_tb;
+module testbench(sif_i INTERFACE);
+    program enviroment_test;
+        initial begin
+            Enviroment tb_ev;
+            tb_ev = new(INTERFACE);
+            tb_ev.run();
         end
-    end
+    endprogram
 endmodule : TB

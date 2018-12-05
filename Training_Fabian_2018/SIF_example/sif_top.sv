@@ -1,7 +1,15 @@
 `include "sif_interface.sv"
 
-module top(sif_i.DUT top_sif);
-    logic bit clk_top;
+module sif_top;
+    bit clk_top;
 
-    sif SIF_DUT(top_sif);
+    initial begin
+        forever begin
+            #5 clk_top = ~clk_top;
+        end
+    end
+
+    sif_i INTERFACE (clk_top);
+    sif DUT(INTERFACE);
+    testbench TB(INTERFACE);
 endmodule : top
