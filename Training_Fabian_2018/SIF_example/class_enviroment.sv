@@ -37,14 +37,22 @@ class Enviroment;
     task init();
         $display("--[ENVIROMENT] Init Task--\n");
 
-        
         ev_gen.run(nr_of_transactions, ev_q);
-        /*the monitor and driver are parallel threads, fork...join_any*/
-        ev_driver.run(ev_q.size(), ev_q);
-
+      
         $display("--[ENVIROMENT] End Init Task--\n");
     endtask
 
+    task drive_and_monitor();
+        $display("--[ENVIROMENT] Drive and Monitor Task--\n");
+
+        /*the monitor and driver are parallel threads, fork...join_any*/
+        /*fork*/
+        ev_driver.run(ev_q.size(), ev_q);
+        /*process to monitors*/
+        /*join_none*/
+
+        $display("--[ENVIROMENT] End Drive and Monitor Task--\n");
+    endtask
     /*task post_test();
     endtask*/
 
@@ -55,7 +63,8 @@ class Enviroment;
         build();
         init();
 
-
+        drive_and_monitor();
+        
         $finish;
 
         $display("--[ENVIROMENT] End Run Task--\n");

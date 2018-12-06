@@ -1,7 +1,7 @@
 `ifndef DRIVER
 `define DRIVER
 
-`define DRIVER_CB driver_i.driver_cb
+`define DUT_CB driver_i.dut_cb
 
 `include "class_gen.sv"
 
@@ -25,11 +25,11 @@ class Driver;
         `DRIVER_CB.xa_wr_s <= 0;
         `DRIVER_CB.xa_rd_s <= 0;*/
 
-        `DRIVER_CB.rst_n <= 0;
+        `DUT_CB.rst_n <= 0;
 
         repeat (2) @(posedge `DRIVER_CB);
         
-        `DRIVER_CB.rst_n <= 1;
+        `DUT_CB.rst_n <= 1;
         $display("--@%gns [DRIVER] End Reset Task--\n");
     endtask
 

@@ -4,10 +4,14 @@ small interface - for training purpose.
 write is passed after one clock to the output.
 read returns the address with a few bits changed, after one clock.
 */
+
+
 module sif (
    rst_b, clk,
    xa_wr_s, xa_rd_s, xa_addr, xa_data_wr, xa_data_rd, 
    wa_wr_s, wa_addr, wa_data_wr
+
+   /*sif_i.DUT DUT_i*/
 );
 
 input rst_b, clk, xa_wr_s, xa_rd_s;

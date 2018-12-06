@@ -13,11 +13,11 @@ interface sif_i(input bit clk);
         input wa_wr_s;
     endclocking
 
-    clocking driver_cb @(posedge clk);
+    /*clocking driver_cb @(posedge clk);
         output xa_addr, xa_data_wr;
         output xa_wr_s, xa_rd_s;
         output rst_n;
-    endclocking 
+    endclocking */
 
     clocking dut_cb @(posedge clk)
         input clk, rst_n;
@@ -29,6 +29,35 @@ interface sif_i(input bit clk);
         output wa_addr, wa_data_wr, wa_wr_s;
     endclocking
 
+    clocking tb_cb @(posedge clk)
+        output xa_addr, xa_data_wr;
+        output xa_wr_s, xa_rd_s;
+    endclocking
+
+    task reset();
+        dut_cb.rst_n <= 0;
+
+        repeat (2) @(driver_cb);
+
+        dut_cb.rst_n <= 1;
+    endtask
+
+    task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
+        @(dut_cb) begin
+            dut_cb.xa_addr <= sent_addr;
+            dut_cb.xa_data_wr <= sent_data;
+            {dut_cb.rst_n, dut_cb.xa_wr_s, dut_cb.xa_rd_s} <= flags;
+        end
+    endtask
+/*----------------------------------------------the read function is called from monitor
+    task read(input logic [15:0] rx_data, input logic [2:0] flags);
+        @(driver_cb) begin
+            driver_cb.xa_data_rd <= rx_data;
+            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
+        end
+    endtask*/
+
+/*----------------------------------------------modports which seem useles in the presence of the clocking blocks
     modport X_MONITOR(
         clocking xmon_cb
     );
@@ -45,27 +74,8 @@ interface sif_i(input bit clk);
         clocking dut_cb
     );
 
-    task reset();
-        driver_cb.rst_n <= 0;
-
-        repeat (2) @(driver_cb);
-
-        driver_cb.rst_n <= 1;
-    endtask
-
-    task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
-        @(driver_cb) begin
-            driver_cb.xa_addr <= sent_addr;
-            driver_cb.xa_data_wr <= sent_data;
-            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
-        end
-    endtask
-/*----------------------------------------------the read function is called from monitor
-    task read(input logic [15:0] rx_data, input logic [2:0] flags);
-        @(driver_cb) begin
-            driver_cb.xa_data_rd <= rx_data;
-            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
-        end
-    endtask*/
+    modport TB(
+        clocking tb_cb;
+    );*/
 
 endinterface : sif_i
