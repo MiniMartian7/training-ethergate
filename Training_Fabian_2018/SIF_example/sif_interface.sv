@@ -19,7 +19,7 @@ interface sif_i(input bit clk);
         output rst_n;
     endclocking */
 
-    clocking dut_cb @(posedge clk)
+    clocking dut_cb @(posedge clk);
         input clk, rst_n;
 
         input xa_addr, xa_data_wr;
@@ -29,33 +29,35 @@ interface sif_i(input bit clk);
         output wa_addr, wa_data_wr, wa_wr_s;
     endclocking
 
-    clocking tb_cb @(posedge clk)
+    clocking tb_cb @(posedge clk);
         output xa_addr, xa_data_wr;
         output xa_wr_s, xa_rd_s;
     endclocking
 
     task reset();
-        dut_cb.rst_n <= 0;
+	
+	rst_n <= 0;
 
-        repeat (2) @(driver_cb);
+        repeat (2) @(clk);
 
-        dut_cb.rst_n <= 1;
+        rst_n <= 1;
     endtask
 
     task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
-        @(dut_cb) begin
-            dut_cb.xa_addr <= sent_addr;
-            dut_cb.xa_data_wr <= sent_data;
-            {dut_cb.rst_n, dut_cb.xa_wr_s, dut_cb.xa_rd_s} <= flags;
+        @(clk) begin
+            xa_addr <= sent_addr;
+            xa_data_wr <= sent_data;
+            {rst_n, xa_wr_s, xa_rd_s} <= flags;
+	   
+	    $display("--@%gns [DRIVER] Packet Sent   Flags|Address|Data_wr :: %b|%b|%b--\n", $time, flags, sent_addr, sent_data);
         end
     endtask
-/*----------------------------------------------the read function is called from monitor
-    task read(input logic [15:0] rx_data, input logic [2:0] flags);
-        @(driver_cb) begin
-            driver_cb.xa_data_rd <= rx_data;
-            {driver_cv.rst_n, driver_cb.xa_wr_s, driver_cb.xa_rd_s} <= flags;
+/*----------------------------------------------the read function is called from monitor*/
+    task read(input logic [2:0] flags);
+        @(clk) begin
+            $display("--@%gns [PSEUDO-MONITOR] Data Read   Flags|Data_rd :: %b|%b--\n", $time, flags, xa_data_rd);
         end
-    endtask*/
+    endtask
 
 /*----------------------------------------------modports which seem useles in the presence of the clocking blocks
     modport X_MONITOR(

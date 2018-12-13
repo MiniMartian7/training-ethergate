@@ -13,20 +13,21 @@ class Enviroment;
     Driver ev_driver;
     Operation ev_q[$];
 
-    int nr_of_transactions = 10;
+    int nr_of_transactions;
     virtual sif_i ev_i;
 
-    function new(virtual sif_i ev_interface);
-        ev_i = ev_interface;
+    function new(int nr_of_tran, virtual sif_i ev_i);
+        this.ev_i = ev_i;
+	nr_of_transactions = nr_of_tran;
     endfunction/*new*/
 
-    /*in enviroment class a function/task of build is needed to provide al the object contructors, then the build is called in the run of the enviroment*/
+    /*in enviroment class a function/task of build is needed to provide al the object constructors, then the build is called in the run of the enviroment*/
 
     function void build();
         $display("--[ENVIROMENT] Build Task--\n");
 
         ev_gen = new();
-        ev_driver = new();
+        ev_driver = new(ev_i);
 
         $display("--[ENVIROMENT] End Build Task--\n");
     endfunction
@@ -47,7 +48,7 @@ class Enviroment;
 
         /*the monitor and driver are parallel threads, fork...join_any*/
         /*fork*/
-        ev_driver.run(ev_q.size(), ev_q);
+        ev_driver.run(ev_q);
         /*process to monitors*/
         /*join_none*/
 
@@ -64,8 +65,6 @@ class Enviroment;
         init();
 
         drive_and_monitor();
-        
-        $finish;
 
         $display("--[ENVIROMENT] End Run Task--\n");
     endtask

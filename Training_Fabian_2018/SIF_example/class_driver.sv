@@ -13,8 +13,12 @@ class Driver;
 
     virtual sif_i driver_i;
 
+    function new(virtual sif_i driver_i);
+	this.driver_i = driver_i;
+    endfunction
+
     task reset();
-        $display("--@%gns [DRIVER] Reset Task--\n");
+        $display("--@%gns [DRIVER] Reset Task--\n", $time);
 
         /*wait-urile se intampla deobicei in monitoare. Waitul se face ventual doar pe clocking block*/
         /*ar fi okay as aiba si driverul resetul lui in run si dupa vine efectuarea tranzactiilor*/
@@ -27,21 +31,20 @@ class Driver;
 
         `DUT_CB.rst_n <= 0;
 
-        repeat (2) @(posedge `DRIVER_CB);
+        repeat (2) @(posedge `DUT_CB);
         
         `DUT_CB.rst_n <= 1;
-        $display("--@%gns [DRIVER] End Reset Task--\n");
+        $display("--@%gns [DRIVER] End Reset Task--\n", $time);
     endtask
 
-    task run(int nr_of_transactions, ref Operation ev_q[$]);
+    task run(ref Operation ev_q[$]);
         $display("--@%gns [DRIVER] Run Task--\n", $time);
 
-        while (nr_of_transactions) begin
-            buffer_q = ev_q.pop_front();
-            ev_q.delete(nr_of_transactions - 1);
-            nr_of_transactions--;
-
-            driver_i.send(buffer.addr, buffer.data, buffer.op);
+        foreach(ev_q[i]) begin
+            buffer_q = ev_q[i];
+          
+            driver_i.send(buffer_q.addr, buffer_q.wr_data, buffer_q.op);
+	    driver_i.read(buffer_q.op);/*this will be in the monitor*/
         end
 
         $display("--@%gns [DRIVER] End Run Task--\n", $time);
