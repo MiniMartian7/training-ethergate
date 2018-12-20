@@ -1,13 +1,20 @@
-`timescale 1ns/1ns
+`timescale 1us/1us
+
+/*timescale [time unit]/[time accuracy]*/
+/*1Hz = 1 s | 1kHz = 1ms | 1MHz = 1us | 1GHz = 1ns | 1THz = 1ps*/
 
 module sif_top;
     reg clk_top;
 
+    parameter CLK_FREQ = 50;/*KHz*/
+    parameter CLK_PERIOD = 1000 / CLK_FREQ;/*uS*/
+    parameter CLK_HALF_PERIOD = CLK_PERIOD / 2;/*uS*/
+
     initial begin
-	clk_top = 1'b0;
+	    clk_top = 1'b0;
         forever begin
-            #5ns
-	    clk_top = ~clk_top;
+            #CLK_HALF_PERIOD
+	        clk_top = ~clk_top;/*50KHz clk*/
         end
     end
 

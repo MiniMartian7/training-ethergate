@@ -10,17 +10,19 @@ If not, include the class in all classes need and use ifndef and define to preve
 
 class Generator;
     Operation trans;
+    integer nr_of_transactions;
 
-    /*event generation_ended;*/
+    parameter MIN_TRANS = 10;
+    parameter MAX_TRANS = 20;
 
-    /*function new(ref Operation ev_q[$]);/*cum se trimite un q
-        gen2driver = ev_q;
-    endfunction*/
+    function new();/*the number of transaction is randomized in the constructor of the gen in the build task*/
+        nr_of_transactions = $random_range(MIN_TRANS, MAX_TRANS);
+    endfunction
 
-    function void run(int nr_of_transactions, ref Operation ev_q[$]);/*nu utilizeaza timp de simulare, adica nu utilizeaza un clock*/
+    function void run(ref Operation ev_q[$]);
         $display("--@%gns [GENERATOR] Main Task--\n", $time);
 
-        repeat (nr_of_transactions) begin/*is there a posibility to generate all the transaction in paralel(fork...join_none)*/
+        repeat (nr_of_transactions) begin
             trans = new();
 
             assert (trans.randomize()) else $fatal(0, "--@%gns [GENERATOR] Transaction Packet :: randomize failed--\n", $time);
@@ -30,8 +32,6 @@ class Generator;
         end
 
         $display("--@%gns [GENERATOR] End Main Task--\n", $time);
-        /*-> generation_ended;*/
     endfunction
 endclass : Generator
-
 `endif

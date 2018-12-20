@@ -13,12 +13,6 @@ interface sif_i(input bit clk);
         input wa_wr_s;
     endclocking
 
-    /*clocking driver_cb @(posedge clk);
-        output xa_addr, xa_data_wr;
-        output xa_wr_s, xa_rd_s;
-        output rst_n;
-    endclocking */
-
     clocking dut_cb @(posedge clk);
         input clk, rst_n;
 
@@ -35,14 +29,13 @@ interface sif_i(input bit clk);
     endclocking
 
     task reset();
-	
-	rst_n <= 0;
+	    rst_n <= 0;
 
         repeat (2) @(clk);
 
         rst_n <= 1;
     endtask
-
+/*----------------------------------------------the send function is called from driver*/
     task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
         @(clk) begin
             xa_addr <= sent_addr;
@@ -58,8 +51,13 @@ interface sif_i(input bit clk);
             $display("--@%gns [PSEUDO-MONITOR] Data Read   Flags|Data_rd :: %b|%b--\n", $time, flags, xa_data_rd);
         end
     endtask
+endinterface : sif_i
 
-/*----------------------------------------------modports which seem useles in the presence of the clocking blocks
+
+
+
+/*modports are necessary when you want to control other signal from a DUT that are not included in the same clocking bloc|
+but also some simulators can not compile without the existance of the modports
     modport X_MONITOR(
         clocking xmon_cb
     );
@@ -80,4 +78,8 @@ interface sif_i(input bit clk);
         clocking tb_cb;
     );*/
 
-endinterface : sif_i
+    /*clocking driver_cb @(posedge clk);
+        output xa_addr, xa_data_wr;
+        output xa_wr_s, xa_rd_s;
+        output rst_n;
+    endclocking */

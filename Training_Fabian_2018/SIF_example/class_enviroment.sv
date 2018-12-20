@@ -13,61 +13,60 @@ class Enviroment;
     Driver ev_driver;
     Operation ev_q[$];
 
-    int nr_of_transactions;
     virtual sif_i ev_i;
 
-    function new(int nr_of_tran, virtual sif_i ev_i);
+    function new(virtual sif_i ev_i);
         this.ev_i = ev_i;
-	nr_of_transactions = nr_of_tran;
     endfunction/*new*/
 
-    /*in enviroment class a function/task of build is needed to provide al the object constructors, then the build is called in the run of the enviroment*/
-
+    
+    /*in enviroment class a function/task of build is needed to provide al the object constructors*/
     function void build();
-        $display("--[ENVIROMENT] Build Task--\n");
+        $display("--@%gns [ENVIROMENT] Build Task--\n", $time);
 
-        ev_gen = new();
+        ev_gen = new();/*the generation of random transaction number is done in the constructor of the generator*/
         ev_driver = new(ev_i);
 
-        $display("--[ENVIROMENT] End Build Task--\n");
+        $display("--@%gns [ENVIROMENT] End Build Task--\n", $time);
     endfunction
 
     /*task pre_test();
     endtask*/
 
     task init();
-        $display("--[ENVIROMENT] Init Task--\n");
+        $display("--@%gns [ENVIROMENT] Init Task--\n", $time);
 
-        ev_gen.run(nr_of_transactions, ev_q);
+        ev_gen.run(ev_q);
       
-        $display("--[ENVIROMENT] End Init Task--\n");
+        $display("--@%gns [ENVIROMENT] End Init Task--\n", $time);
     endtask
 
-    task drive_and_monitor();
-        $display("--[ENVIROMENT] Drive and Monitor Task--\n");
+    task run();
+        $display("--@%gns [ENVIROMENT] Run Task--\n", $time);
 
         /*the monitor and driver are parallel threads, fork...join_any*/
-        /*fork*/
+        ev_driver.run(ev_q);
+
+        /*create a idle situation to be responsive to specific externela stimulus*/
+        $display("--@%gns [ENVIROMENT] End Run Task--\n", $time);
+    endtask
+endclass : Enviroment
+
+`endif
+
+
+
+
+ /*task drive_and_monitor();
+        $display("--[ENVIROMENT] Drive and Monitor Task--\n");
+
+        the monitor and driver are parallel threads, fork...join_any*/
+        /*fork
         ev_driver.run(ev_q);
         /*process to monitors*/
-        /*join_none*/
+        /*join_none
 
         $display("--[ENVIROMENT] End Drive and Monitor Task--\n");
     endtask
     /*task post_test();
     endtask*/
-
-    task run();
-        $display("--[ENVIROMENT] Run Task--\n");
-        /*fiecare clasa are un task run si este chemat in ev dupa ultima operatie sa se seteze pe idle*/
-    
-        build();
-        init();
-
-        drive_and_monitor();
-
-        $display("--[ENVIROMENT] End Run Task--\n");
-    endtask
-endclass : Enviroment
-
-`endif
