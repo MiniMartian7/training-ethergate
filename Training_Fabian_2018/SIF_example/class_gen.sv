@@ -16,7 +16,7 @@ class Generator;
     parameter MAX_TRANS = 20;
 
     function new();/*the number of transaction is randomized in the constructor of the gen in the build task*/
-        nr_of_transactions = $random_range(MIN_TRANS, MAX_TRANS);
+        nr_of_transactions = $urandom_range(MIN_TRANS, MAX_TRANS);
     endfunction
 
     function void run(ref Operation ev_q[$]);

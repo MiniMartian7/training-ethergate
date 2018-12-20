@@ -19,7 +19,7 @@ class Driver;
 
         repeat (2) @(posedge driver_i.clk);
         
-        driver.rst_n <= 1;
+        driver_i.rst_n <= 1;
 
         $display("--@%gns [DRIVER] End Reset Task--\n", $time);
     endtask
