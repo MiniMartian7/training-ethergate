@@ -7,11 +7,15 @@ If not, include the class in all classes need and use ifndef and define to preve
 `include "class_transaction.sv"
 `include "class_gen.sv"
 `include "class_driver.sv"
+`include "class_monitor.sv"
 
 class Enviroment;
     Generator ev_gen;
     Driver ev_driver;
+    Monitor ev_xa_mon, ev_wa_mon;
+
     Operation ev_q[$];
+    Monitor_Operation ev_q_xa_mon2scb[$], ev_q_wa_mon2scb[$];
 
     virtual sif_i ev_i;
 
@@ -26,6 +30,8 @@ class Enviroment;
 
         ev_gen = new();/*the generation of random transaction number is done in the constructor of the generator*/
         ev_driver = new(ev_i);
+        ev_xa_mon = new();
+        ev_wa_mon = new();
 
         $display("--@%gns [ENVIROMENT] End Build Task--\n", $time);
     endfunction
@@ -45,7 +51,12 @@ class Enviroment;
         $display("--@%gns [ENVIROMENT] Run Task--\n", $time);
 
         /*the monitor and driver are parallel threads, fork...join_any*/
-        ev_driver.run(ev_q);
+        fork
+            ev_driver.run(ev_q);
+            
+            ev_xa_mon.run(ev_i.xa_data_rd, ev_i.xa_addr, ev_q_xa_mon2scb);
+            ev_wa_mon.run(ev_i.wa_data_rd, ev_i.wa_addr, ev_q_wa_mon2scb);
+        join_any
 
         /*create a idle situation to be responsive to specific externela stimulus*/
         $display("--@%gns [ENVIROMENT] End Run Task--\n", $time);

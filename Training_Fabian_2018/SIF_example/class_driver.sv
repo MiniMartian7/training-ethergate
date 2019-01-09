@@ -11,7 +11,7 @@ class Driver;
     function new(virtual sif_i driver_i);
 	this.driver_i = driver_i;
     endfunction
-
+/*
     task reset();
         $display("--@%gns [DRIVER] Reset Task--\n", $time);
 
@@ -23,7 +23,7 @@ class Driver;
 
         $display("--@%gns [DRIVER] End Reset Task--\n", $time);
     endtask
-
+*/
     task run(ref Operation ev_q[$]);
         $display("--@%gns [DRIVER] Run Task--\n", $time);
 

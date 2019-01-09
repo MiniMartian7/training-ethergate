@@ -42,13 +42,7 @@ interface sif_i(input bit clk);
             xa_data_wr <= sent_data;
             {rst_n, xa_wr_s, xa_rd_s} <= flags;
 	   
-	    $display("--@%gns [DRIVER] Packet Sent   Flags|Address|Data_wr :: %b|%b|%b--\n", $time, flags, sent_addr, sent_data);
-        end
-    endtask
-/*----------------------------------------------the read function is called from monitor*/
-    task read(input logic [2:0] flags);
-        @(clk) begin
-            $display("--@%gns [PSEUDO-MONITOR] Data Read   Flags|Data_rd :: %b|%b--\n", $time, flags, xa_data_rd);
+	    /*$display("--@%gns [DRIVER] Packet Sent   Flags|Address|Data_wr :: %b|%b|%b--\n", $time, flags, sent_addr, sent_data);*/
         end
     endtask
 endinterface : sif_i

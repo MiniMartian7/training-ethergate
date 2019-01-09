@@ -17,8 +17,18 @@ class Operation;
     endfunction
 
     function void display();
-      $display("--@%gns [OPERATION] Transaction Packet Number|Data|Address :: %d|%b|%b|%b--\n", $time, nr_op, op, wr_data, addr);
+      $display("--@%gns [TRANSACTION] Transaction Packet Number|Type|Data|Address :: %d|%b|%b|%b--\n", $time, nr_op, op, wr_data, addr);
     endfunction
 endclass : Operation
 
+class Monitor_Operation;
+  bit [15:0] data, addr;
+
+  function new();
+  end
+
+  function void display();
+        $display("--@%gns [MONITOR] Info data|address :: %b|%b --\n", $time, data, addr);
+    endfunction
+endclass : Monitor_Operation
 `endif
