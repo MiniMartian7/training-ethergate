@@ -1,6 +1,6 @@
 library_pack.sv
-class_transaction.sv
-class_gen.sv
+class_packet.sv
+class_generator.sv
 class_driver.sv
 class_enviroment.sv
 sif_test.sv

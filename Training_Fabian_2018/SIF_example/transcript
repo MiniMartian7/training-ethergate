@@ -1,3 +1,4 @@
+# vsim +UVM_TESTNAME=sw_test -coverage -c tb_optimized 
 # //  Questa Sim-64
 # //  Version 10.2b linux_x86_64 May 16 2013
 # //
@@ -8,97 +9,13 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim +UVM_TESTNAME=sw_test -coverage tb_optimized 
 # Loading sv_std.std
+# Loading work.lib_pack(fast)
+# Loading work.sif_test_sv_unit(fast)
 # Loading work.sif_top(fast)
 # Loading work.sif_i(fast)
 # Loading work.sif(fast)
 # Loading work.dff16_en(fast)
 # Loading work.dff_en(fast)
-# Loading work.lib_pack(fast)
-# Loading work.sif_test_sv_unit(fast)
 # Loading work.sif_test(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-run -all
-# --@0ns [ENVIROMENT] Build Task--
-# 
-# --@0ns [ENVIROMENT] End Build Task--
-# 
-# --@0ns [ENVIROMENT] Init Task--
-# 
-# --@0ns [GENERATOR] Main Task--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           1|111|0000000000000110|1000111000000100--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           2|100|0000000000000101|0101100101010011--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           3|101|0000000000000110|1101111010000101--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           4|111|0000000000000000|1001100011100011--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           5|110|0000000000000110|1001111101011111--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           6|110|0000000000000101|1110010110000001--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           7|100|0000000000000101|0010111110011111--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           8|101|0000000000000110|0101011111011111--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::           9|111|0000000000000110|1110010011101010--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          10|100|0000000000000101|1000111010101001--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          11|100|0000000000000110|1101100010110011--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          12|110|0000000000000110|0101110111011101--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          13|100|0000000000000101|1000010100111110--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          14|110|0000000000000100|1110001100110010--
-# 
-# --@0ns [OPERATION] Transaction Packet Number|Data|Address ::          15|000|0000000000000101|0111001100011110--
-# 
-# --@0ns [GENERATOR] End Main Task--
-# 
-# --@0ns [ENVIROMENT] End Init Task--
-# 
-# --@0ns [ENVIROMENT] Run Task--
-# 
-# --@0ns [DRIVER] Run Task--
-# 
-# --@3e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 111|1000111000000100|0000000000000110--
-# 
-# --@4e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 100|0101100101010011|0000000000000101--
-# 
-# --@5e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 101|1101111010000101|0000000000000110--
-# 
-# --@6e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 111|1001100011100011|0000000000000000--
-# 
-# --@7e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 110|1001111101011111|0000000000000110--
-# 
-# --@8e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 110|1110010110000001|0000000000000101--
-# 
-# --@9e+07ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 100|0010111110011111|0000000000000101--
-# 
-# --@1e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 101|0101011111011111|0000000000000110--
-# 
-# --@1.1e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 111|1110010011101010|0000000000000110--
-# 
-# --@1.2e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 100|1000111010101001|0000000000000101--
-# 
-# --@1.3e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 100|1101100010110011|0000000000000110--
-# 
-# --@1.4e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 110|0101110111011101|0000000000000110--
-# 
-# --@1.5e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 100|1000010100111110|0000000000000101--
-# 
-# --@1.6e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 110|1110001100110010|0000000000000100--
-# 
-# --@1.7e+08ns [DRIVER] Packet Sent   Flags|Address|Data_wr :: 000|0111001100011110|0000000000000101--
-# 
-# --@1.7e+08ns [DRIVER] End Run Task--
-# 
-# --@1.7e+08ns [ENVIROMENT] End Run Task--
-# 
-# 1
-# Simulation stop requested.

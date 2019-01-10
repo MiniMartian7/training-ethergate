@@ -3,12 +3,13 @@ interface sif_i(input bit clk);
     logic xa_wr_s, xa_rd_s, wa_wr_s;
     logic [15:0] xa_addr, wa_addr, xa_data_rd, xa_data_wr, wa_data_wr;
 
-    clocking xmon_cb @(posedge clk);
+    clocking xa_mon_cb @(posedge clk);
         input xa_addr, xa_data_wr;
         input xa_data_rd;
+	input xa_wr_s, xa_rd_s;
     endclocking
 
-    clocking wmon_cb @(posedge clk);
+    clocking wa_mon_cb @(posedge clk);
         input wa_addr, wa_data_wr;
         input wa_wr_s;
     endclocking
@@ -28,6 +29,10 @@ interface sif_i(input bit clk);
         output xa_wr_s, xa_rd_s;
     endclocking
 
+	modport XA_MONITOR(
+	clocking xa_mon_cb;
+);
+
     task reset();
 	    rst_n <= 0;
 
@@ -37,12 +42,12 @@ interface sif_i(input bit clk);
     endtask
 /*----------------------------------------------the send function is called from driver*/
     task send(input logic [15:0] sent_addr, sent_data, input logic [2:0] flags);
-        @(clk) begin
+        @(posedge clk) begin
             xa_addr <= sent_addr;
             xa_data_wr <= sent_data;
             {rst_n, xa_wr_s, xa_rd_s} <= flags;
-	   
-	    /*$display("--@%gns [DRIVER] Packet Sent   Flags|Address|Data_wr :: %b|%b|%b--\n", $time, flags, sent_addr, sent_data);*/
+	     
+            @(posedge clk);/*give a delay for the observation region*/
         end
     endtask
 endinterface : sif_i

@@ -12,7 +12,7 @@ vlib work
 vlog -f filelist.f
 vopt sif_top -o tb_optimized  +acc
 
-vsim tb_optimized -coverage +UVM_TESTNAME=sw_test
+vsim tb_optimized -c -coverage +UVM_TESTNAME=sw_test
 set NoQuitOnFinish 1
 onbreak {resume}
 log /* -r
