@@ -25,15 +25,15 @@ module sif_top;
     sif DUT(
         .clk(clk_top),
         .rst_b(TOP_i.rst_n),
-        .xa_wr_s(TOP_i.dut_cb.xa_wr_s),
-        .xa_rd_s(TOP_i.dut_cb.xa_rd_s),
-        .xa_addr(TOP_i.dut_cb.xa_addr),
-        .xa_data_rd(TOP_i.dut_cb.xa_data_rd),
-        .xa_data_wr(TOP_i.dut_cb.xa_data_wr),
+        .xa_wr_s(TOP_i.xa_wr_s),
+        .xa_rd_s(TOP_i.xa_rd_s),
+        .xa_addr(TOP_i.xa_addr),
+        .xa_data_rd(TOP_i.xa_data_rd),
+        .xa_data_wr(TOP_i.xa_data_wr),
 
-        .wa_addr(TOP_i.dut_cb.wa_addr),
-        .wa_data_wr(TOP_i.dut_cb.wa_data_wr),
-        .wa_wr_s(TOP_i.dut_cb.wa_wr_s)
+        .wa_addr(TOP_i.wa_addr),
+        .wa_data_wr(TOP_i.wa_data_wr),
+        .wa_wr_s(TOP_i.wa_wr_s)
     );
 
     sif_test TB(TOP_i);

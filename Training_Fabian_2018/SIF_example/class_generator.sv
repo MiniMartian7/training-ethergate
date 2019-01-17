@@ -1,7 +1,7 @@
 `ifndef GENERATOR
 `define GENERATOR
 
-`include "class_packet.sv"
+import packet::*;
 
 /*the include on transaction class in enviroment should make available the class also to other classes in which it is used. This depends on the compiler. 
 If not, include the class in all classes need and use ifndef and define to prevent multiple initialisations of the class*/
@@ -9,14 +9,12 @@ If not, include the class in all classes need and use ifndef and define to preve
 /*the difference between a task and a function is that a function does not use simulation time, which means no clock dependency*/
 
 class Generator;
-    Packet ev_q[$];
     integer nr_of_pak;
 
     parameter MIN_TRANS = 10;
     parameter MAX_TRANS = 20;
 
-    function new(ref Packet ev_q[$]);/*the number of transaction is randomized in the constructor of the gen in the build task*/
-	this.ev_q = ev_q;
+    function new();/*the number of transaction is randomized in the constructor of the gen in the build task*/
         nr_of_pak = $urandom_range(MIN_TRANS, MAX_TRANS);
     endfunction
 
@@ -24,13 +22,13 @@ class Generator;
         $display("--@%gns [GENERATOR] Main Task--\n", $time);
 
         repeat (nr_of_pak) begin
-	    Packet pak;
-            pak = new();
+	    //Packet pak;
+            op_pak = new();
 
-            assert (pak.randomize()) else $fatal(0, "--@%gns [GENERATOR] Packet randomization failed--\n", $time);
+            assert (op_pak.randomize()) else $fatal(0, "--@%gns [GENERATOR] Packet randomization failed--\n", $time);
 
-            pak.display();
-            ev_q.push_back(pak); 
+            op_pak.display();
+            op_q.push_back(op_pak); 
         end
 
         $display("--@%gns [GENERATOR] End Main Task--\n", $time);

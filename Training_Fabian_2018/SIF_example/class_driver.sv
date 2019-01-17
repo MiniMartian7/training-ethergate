@@ -1,15 +1,13 @@
 `ifndef DRIVER
 `define DRIVER
 
-`include "class_generator.sv"
+import packet::*;
 
 class Driver;
     virtual sif_i driver_i;
-    Packet ev_q[$];
 
-    function new(virtual sif_i driver_i, ref Packet ev_q[$]);
+    function new(virtual sif_i driver_i);
 	this.driver_i = driver_i;
-	this.ev_q = ev_q;
     endfunction
 /*
     task reset();
@@ -24,18 +22,12 @@ class Driver;
         $display("--@%gns [DRIVER] End Reset Task--\n", $time);
     endtask
 */
-    task run;
+    task run();
         $display("--@%gns [DRIVER] Run Task--\n", $time);
 
         driver_i.reset();/*initial reset*/
 
-        foreach(ev_q[i]) begin
-	    Packet buffer_q;
-	    buffer_q = new();
-            buffer_q = ev_q[i];
-          
-            driver_i.send(buffer_q.addr, buffer_q.data, buffer_q.op);
-        end
+     	foreach(op_q[i]) driver_i.send(op_q[i].data, op_q[i].addr, op_q[i].op);
 
         /*creat the idle state*/
 

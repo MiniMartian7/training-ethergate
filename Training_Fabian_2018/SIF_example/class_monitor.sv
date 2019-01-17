@@ -1,45 +1,51 @@
 `ifndef MONITOR
 `define MONITOR
 
-import lib_operation_type::*;
-
-`include "class_packet.sv"
+import packet::*;
+import lib::*;
 
 class Monitor;/*clasa de monitor trebuie sa fie comuna pentru ambele monitoare*/
     virtual sif_i mon_i;
-    Packet ev_xa_mon_q[$], ev_wa_mon_q[$];
+	
+    integer nr = 0;
 
 
-    function new(virtual sif_i mon_i, ref Packet ev_xa_mon_q[$], ev_wa_mon_q[$]);
+    function new(virtual sif_i mon_i);
         this.mon_i = mon_i;
-	this.ev_xa_mon_q = ev_xa_mon_q;
-	this.ev_wa_mon_q = ev_wa_mon_q;
     endfunction
 
-    task run_xa_mon;
+    task xa_run;
 	$display("--@%gns [XA_MONITOR] Run Task--\n", $time);
-		
-		forever begin
-			Packet xa_mon_pak;
-			xa_mon_pak = new();
 
-			@(posedge mon_i.xa_mon_cb) begin
+		forever begin
+			xa_mon_pak = new();
+			
+			@(mon_i.xa_mon_cb);
 				if(mon_i.xa_mon_cb.xa_wr_s) begin
-					xa_mon_pak.data <= mon_i.XA_MONITOR.xa_mon_cb.xa_data_wr;
-					xa_mon_pak.addr <= mon_i.xa_mon_cb.xa_addr;
+					xa_mon_pak.op = WRITE;
+					xa_mon_pak.addr = mon_i.xa_addr;
+					xa_mon_pak.data = mon_i.xa_data_wr;
 				end
 				else if(mon_i.xa_mon_cb.xa_rd_s) begin
-					xa_mon_pak.data <= mon_i.xa_mon_cb.xa_data_rd;
-					xa_mon_pak.addr <= mon_i.xa_mon_cb.xa_addr;
+					xa_mon_pak.op = READ;
+					xa_mon_pak.addr = mon_i.xa_addr;
+					xa_mon_pak.data = mon_i.xa_data_rd;
 				end
-				xa_mon_pak.display();
-				ev_xa_mon_q.push_back(xa_mon_pak);
-			end
+				
+				if(nr == 10) begin
+					$finish;
+				end
+				else begin
+					nr++;
+					$display("--@%gns [XA_MONITOR] %h|%h|%h--\n", $time, mon_i.xa_addr, mon_i.xa_data_wr, mon_i.xa_data_rd);
+				end
+
+				xa_mon_q.push_back(xa_mon_pak);
 		end
 		
 	$display("--@%gns [XA_MONITOR] Run Task--\n", $time);
     endtask
-
+/*
     task run_wa_mon;
 	$display("--@%gns [WA_MONITOR] Run Task--\n", $time);
 		
@@ -62,6 +68,6 @@ class Monitor;/*clasa de monitor trebuie sa fie comuna pentru ambele monitoare*/
 		end
 
 	$display("--@%gns [WA_MONITOR] Run Task--\n", $time);
-    endtask
+    endtask*/
 endclass : Monitor
 `endif
