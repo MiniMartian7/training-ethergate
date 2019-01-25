@@ -1,0 +1,128 @@
+# //  Questa Sim-64
+# //  Version 10.2b linux_x86_64 May 16 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim +UVM_TESTNAME=sw_test -coverage tb_optimized 
+# Loading sv_std.std
+# Loading work.sif_top(fast)
+# Loading work.sif_i(fast)
+# Loading work.sif(fast)
+# Loading work.dff16_en(fast)
+# Loading work.dff_en(fast)
+# Loading work.lib(fast)
+# Loading work.packet(fast)
+# Loading work.monitor(fast)
+# Loading work.driver(fast)
+# Loading work.generator(fast)
+# Loading work.sif_test_sv_unit(fast)
+# Loading work.sif_test(fast)
+# ** Warning: (vsim-8634) Code was not compiled with coverage options.
+run -all
+# --@0ns [ENVIROMENT] Build Task--
+# 
+# --@0ns [ENVIROMENT] End Build Task--
+# 
+# --@0ns [ENVIROMENT] Init Task--
+# 
+# --@0ns [GENERATOR] Main Task--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           1|101|b18c|de85--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           2|110|271b|98e3--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           3|110|9589|9f5f--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           4|101|7ebb|e581--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           5|100|dee3|2f9f--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           6|110|050e|57df--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           7|101|b8e4|e4ea--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           8|101|0b96|8ea9--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::           9|101|82be|d8b3--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          10|101|25c5|5ddd--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          11|000|1bcd|853e--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          12|100|f37f|e332--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          13|110|1630|731e--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          14|110|e3ce|8165--
+# 
+# --@0ns [Packet] Number|Operation|Data|Address ::          15|110|f669|73b4--
+# 
+# --@0ns [GENERATOR] End Main Task--
+# 
+# --@0ns [ENVIROMENT] End Init Task--
+# 
+# --@0ns [ENVIROMENT] Run Task--
+# 
+# --@0ns [DRIVER] Run Task--
+# 
+# --@0ns [INTERFACE] Reset Task--
+# 
+# --@0ns [XA_MONITOR] Run Task--
+# 
+# --@1e+07ns [XA_MONITOR] xxxx|xxxx|0000--
+# 
+# --@2e+07ns [INTERFACE] End Reset Task--
+# 
+# --@2e+07ns [INTERFACE] Send Task--
+# 
+# --@3e+07ns [XA_MONITOR] xxxx|xxxx|xxxx--
+# 
+# --@3e+07ns DELAY--
+# 
+# --@5e+07ns [XA_MONITOR] b18c|de85|b18c--
+# 
+# --@5e+07ns DELAY--
+# 
+# --@7e+07ns [XA_MONITOR] b18c|de85|b18c--
+# 
+# --@7e+07ns [INTERFACE] End Send Task--
+# 
+# --@7e+07ns [INTERFACE] Send Task--
+# 
+# --@9e+07ns [XA_MONITOR] b18c|de85|b18c--
+# 
+# --@9e+07ns DELAY--
+# 
+# --@1.1e+08ns [XA_MONITOR] 271b|98e3|0000--
+# 
+# --@1.1e+08ns DELAY--
+# 
+# --@1.3e+08ns [XA_MONITOR] 271b|98e3|0000--
+# 
+# --@1.3e+08ns [INTERFACE] End Send Task--
+# 
+# --@1.3e+08ns [INTERFACE] Send Task--
+# 
+# --@1.5e+08ns [XA_MONITOR] 271b|98e3|0000--
+# 
+# --@1.5e+08ns DELAY--
+# 
+# --@1.7e+08ns [XA_MONITOR] 9589|9f5f|0000--
+# 
+# --@1.7e+08ns DELAY--
+# 
+# --@1.9e+08ns [XA_MONITOR] 9589|9f5f|0000--
+# 
+# --@1.9e+08ns [INTERFACE] End Send Task--
+# 
+# --@1.9e+08ns [INTERFACE] Send Task--
+# 
+# ** Note: $finish    : class_monitor.sv(36)
+#    Time: 210 us  Iteration: 1  Region: /sif_test_sv_unit::Enviroment::run
+# 1
+# Break in Task monitor/Monitor::xa_run at class_monitor.sv line 36

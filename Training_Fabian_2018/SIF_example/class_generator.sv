@@ -19,19 +19,18 @@ class Generator;
     endfunction
 
     function void run();
-        $display("--@%gns [GENERATOR] Main Task--\n", $time);
+        $display("--%t [GENERATOR] Main Task--\n", $time);
 
         repeat (nr_of_pak) begin
-	    //Packet pak;
             op_pak = new();
 
-            assert (op_pak.randomize()) else $fatal(0, "--@%gns [GENERATOR] Packet randomization failed--\n", $time);
+            assert (op_pak.randomize()) else $fatal(0, "--%t [GENERATOR] Packet randomization failed--\n", $time);
 
             op_pak.display();
             op_q.push_back(op_pak); 
         end
 
-        $display("--@%gns [GENERATOR] End Main Task--\n", $time);
+        $display("--%t [GENERATOR] End Main Task--\n", $time);
     endfunction
 endclass : Generator
 `endif

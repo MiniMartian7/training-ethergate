@@ -1,4 +1,4 @@
-`include "class_enviroment.sv"
+import enviroment::*;
 
 module sif_test(sif_i TB_i);
 	program automatic ev_test;

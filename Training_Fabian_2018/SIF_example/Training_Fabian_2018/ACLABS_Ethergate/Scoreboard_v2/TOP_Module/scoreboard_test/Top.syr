@@ -1,0 +1,849 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: Top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Top"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : Top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../../VGA_Module/VGA_module.v" in library work
+Compiling verilog file "../../TIME_Module/TIME_module.v" in library work
+Module <vga> compiled
+Compiling verilog file "../../SEL_Module/SEL_module.v" in library work
+Module <timing> compiled
+Compiling verilog file "../../OUT_Module/OUT_module.v" in library work
+Module <sel> compiled
+Compiling verilog file "../../MUX_Module/MUX_module.v" in library work
+Module <out> compiled
+Compiling verilog file "../../MEM_Module/MEM_module.v" in library work
+Module <mux> compiled
+Compiling verilog file "../../CLK_Module/CLK_module.v" in library work
+Module <mem> compiled
+Compiling verilog file "../TOP_module.v" in library work
+Module <clk> compiled
+Module <Top> compiled
+No errors in compilation
+Analysis of file <"Top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <Top> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	ENABLE = "00000000000000000000000000000001"
+	H_VIZ = "00000000000000000000001010000000"
+	RESET = "00000000000000000000000000000000"
+	V_VIZ = "00000000000000000000000111100000"
+
+Analyzing hierarchy for module <clk> in library <work>.
+
+Analyzing hierarchy for module <vga> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	ENABLE = "00000000000000000000000000000001"
+	H_BP = "00000000000000000000000000110000"
+	H_FP = "00000000000000000000000000010000"
+	H_PULSE = "00000000000000000000000001100000"
+	H_SYNC = "00000000000000000000001100100000"
+	H_VIZ = "00000000000000000000001010000000"
+	RESET = "00000000000000000000000000000000"
+	V_BP = "00000000000000000000000000100001"
+	V_FP = "00000000000000000000000000001010"
+	V_PULSE = "00000000000000000000000000000010"
+	V_SYNC = "00000000000000000000001000001101"
+	V_VIZ = "00000000000000000000000111100000"
+
+Analyzing hierarchy for module <timing> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	EIGTH = "00000000000000000000000000001000"
+	ENABLE = "00000000000000000000000000000001"
+	FIFTY_SEC = "01001010100000010111110010000000"
+	FIVE = "00000000000000000000000000000101"
+	FOUR = "00000000000000000000000000000100"
+	FOURTY_SEC = "00111011100110101100101000000000"
+	NINE = "00000000000000000000000000001001"
+	ONE = "00000000000000000000000000000001"
+	ONE_MIN = "01011001011010000010111100000000"
+	ONE_SEC = "00000001011111010111100001000000"
+	RESET = "00000000000000000000000000000000"
+	SEVEN = "00000000000000000000000000000111"
+	SIX = "00000000000000000000000000000110"
+	TEN = "00000000000000000000000000001010"
+	TEN_SEC = "00001110111001101011001010000000"
+	THIRTY_SEC = "00101100101101000001011110000000"
+	THREE = "00000000000000000000000000000011"
+	TWENTY_SEC = "00011101110011010110010100000000"
+	TWO = "00000000000000000000000000000010"
+	ZERO = "00000000000000000000000000000000"
+
+Analyzing hierarchy for module <mux> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	ENABLE = "00000000000000000000000000000001"
+	NULL = "00000000000000000000000000001111"
+	RESET = "00000000000000000000000000000000"
+	SEL_MIN = "00000000000000000000000000000011"
+	SEL_NULL = "00000000000000000000000000000000"
+	SEL_SEC = "00000000000000000000000000000001"
+	SEL_TEN_SEC = "00000000000000000000000000000010"
+
+Analyzing hierarchy for module <sel> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	EIGTH = "00000000000000000000000000001000"
+	ENABLE = "00000000000000000000000000000001"
+	FIVE = "00000000000000000000000000000101"
+	FOUR = "00000000000000000000000000000100"
+	NINE = "00000000000000000000000000001001"
+	ONE = "00000000000000000000000000000001"
+	RESET = "00000000000000000000000000000000"
+	SEL_MIN = "00000000000000000000000000000011"
+	SEL_NULL = "00000000000000000000000000000000"
+	SEL_SEC = "00000000000000000000000000000001"
+	SEL_TEN_SEC = "00000000000000000000000000000010"
+	SEVEN = "00000000000000000000000000000111"
+	SIX = "00000000000000000000000000000110"
+	TEN = "00000000000000000000000000001010"
+	THREE = "00000000000000000000000000000011"
+	TWO = "00000000000000000000000000000010"
+	ZERO = "00000000000000000000000000000000"
+
+Analyzing hierarchy for module <mem> in library <work> with parameters.
+	DISABLE = "00000000000000000000000000000000"
+	EIGTH = "00000000000000000000000000001000"
+	ENABLE = "00000000000000000000000000000001"
+	FIVE = "00000000000000000000000000000101"
+	FOUR = "00000000000000000000000000000100"
+	NINE = "00000000000000000000000000001001"
+	NULL = "00000000000000000000000000001111"
+	ONE = "00000000000000000000000000000001"
+	RESET = "00000000000000000000000000000000"
+	SEVEN = "00000000000000000000000000000111"
+	SIX = "00000000000000000000000000000110"
+	TEN = "00000000000000000000000000001010"
+	THREE = "00000000000000000000000000000011"
+	TWO = "00000000000000000000000000000010"
+	ZERO = "00000000000000000000000000000000"
+
+Analyzing hierarchy for module <out> in library <work> with parameters.
+	BLACK = "00000000000000000000000000000000"
+	DISABLE = "00000000000000000000000000000000"
+	ENABLE = "00000000000000000000000000000001"
+	RESET = "00000000000000000000000000000000"
+	WHITE = "00000000000000000000000011111111"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <Top>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	ENABLE = 32'sb00000000000000000000000000000001
+	H_VIZ = 32'b00000000000000000000001010000000
+	RESET = 32'sb00000000000000000000000000000000
+	V_VIZ = 32'b00000000000000000000000111100000
+Module <Top> is correct for synthesis.
+ 
+Analyzing module <clk> in library <work>.
+Module <clk> is correct for synthesis.
+ 
+Analyzing module <vga> in library <work>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	ENABLE = 32'sb00000000000000000000000000000001
+	H_BP = 32'b00000000000000000000000000110000
+	H_FP = 32'b00000000000000000000000000010000
+	H_PULSE = 32'b00000000000000000000000001100000
+	H_SYNC = 32'b00000000000000000000001100100000
+	H_VIZ = 32'b00000000000000000000001010000000
+	RESET = 32'sb00000000000000000000000000000000
+	V_BP = 32'b00000000000000000000000000100001
+	V_FP = 32'b00000000000000000000000000001010
+	V_PULSE = 32'b00000000000000000000000000000010
+	V_SYNC = 32'b00000000000000000000001000001101
+	V_VIZ = 32'b00000000000000000000000111100000
+Module <vga> is correct for synthesis.
+ 
+Analyzing module <timing> in library <work>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	EIGTH = 32'b00000000000000000000000000001000
+	ENABLE = 32'sb00000000000000000000000000000001
+	FIFTY_SEC = 32'b01001010100000010111110010000000
+	FIVE = 32'b00000000000000000000000000000101
+	FOUR = 32'b00000000000000000000000000000100
+	FOURTY_SEC = 32'b00111011100110101100101000000000
+	NINE = 32'b00000000000000000000000000001001
+	ONE = 32'b00000000000000000000000000000001
+	ONE_MIN = 32'b01011001011010000010111100000000
+	ONE_SEC = 32'b00000001011111010111100001000000
+	RESET = 32'sb00000000000000000000000000000000
+	SEVEN = 32'b00000000000000000000000000000111
+	SIX = 32'b00000000000000000000000000000110
+	TEN = 32'b00000000000000000000000000001010
+	TEN_SEC = 32'b00001110111001101011001010000000
+	THIRTY_SEC = 32'b00101100101101000001011110000000
+	THREE = 32'b00000000000000000000000000000011
+	TWENTY_SEC = 32'b00011101110011010110010100000000
+	TWO = 32'b00000000000000000000000000000010
+	ZERO = 32'b00000000000000000000000000000000
+Module <timing> is correct for synthesis.
+ 
+Analyzing module <mux> in library <work>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	ENABLE = 32'sb00000000000000000000000000000001
+	NULL = 32'b00000000000000000000000000001111
+	RESET = 32'sb00000000000000000000000000000000
+	SEL_MIN = 32'b00000000000000000000000000000011
+	SEL_NULL = 32'b00000000000000000000000000000000
+	SEL_SEC = 32'b00000000000000000000000000000001
+	SEL_TEN_SEC = 32'b00000000000000000000000000000010
+Module <mux> is correct for synthesis.
+ 
+Analyzing module <sel> in library <work>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	EIGTH = 32'b00000000000000000000000000001000
+	ENABLE = 32'sb00000000000000000000000000000001
+	FIVE = 32'b00000000000000000000000000000101
+	FOUR = 32'b00000000000000000000000000000100
+	NINE = 32'b00000000000000000000000000001001
+	ONE = 32'b00000000000000000000000000000001
+	RESET = 32'sb00000000000000000000000000000000
+	SEL_MIN = 32'b00000000000000000000000000000011
+	SEL_NULL = 32'b00000000000000000000000000000000
+	SEL_SEC = 32'b00000000000000000000000000000001
+	SEL_TEN_SEC = 32'b00000000000000000000000000000010
+	SEVEN = 32'b00000000000000000000000000000111
+	SIX = 32'b00000000000000000000000000000110
+	TEN = 32'b00000000000000000000000000001010
+	THREE = 32'b00000000000000000000000000000011
+	TWO = 32'b00000000000000000000000000000010
+	ZERO = 32'b00000000000000000000000000000000
+Module <sel> is correct for synthesis.
+ 
+Analyzing module <mem> in library <work>.
+	DISABLE = 32'sb00000000000000000000000000000000
+	EIGTH = 32'b00000000000000000000000000001000
+	ENABLE = 32'sb00000000000000000000000000000001
+	FIVE = 32'b00000000000000000000000000000101
+	FOUR = 32'b00000000000000000000000000000100
+	NINE = 32'b00000000000000000000000000001001
+	NULL = 32'b00000000000000000000000000001111
+	ONE = 32'b00000000000000000000000000000001
+	RESET = 32'sb00000000000000000000000000000000
+	SEVEN = 32'b00000000000000000000000000000111
+	SIX = 32'b00000000000000000000000000000110
+	TEN = 32'b00000000000000000000000000001010
+	THREE = 32'b00000000000000000000000000000011
+	TWO = 32'b00000000000000000000000000000010
+	ZERO = 32'b00000000000000000000000000000000
+Module <mem> is correct for synthesis.
+ 
+Analyzing module <out> in library <work>.
+	BLACK = 32'b00000000000000000000000000000000
+	DISABLE = 32'sb00000000000000000000000000000000
+	ENABLE = 32'sb00000000000000000000000000000001
+	RESET = 32'sb00000000000000000000000000000000
+	WHITE = 32'b00000000000000000000000011111111
+Module <out> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <mem_nr_0> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_1> in unit <mem> has a constant value of 100000000000000000000000000111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_2> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_3> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_4> in unit <mem> has a constant value of 100000000000000000000000000111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_5> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_6> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_7> in unit <mem> has a constant value of 100000000000000000000000000111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_8> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <mem_nr_9> in unit <mem> has a constant value of 111111111111111111111111111111111 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <clk>.
+    Related source file is "../../CLK_Module/CLK_module.v".
+    Found 1-bit register for signal <clk_25_out>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <clk> synthesized.
+
+
+Synthesizing Unit <vga>.
+    Related source file is "../../VGA_Module/VGA_module.v".
+    Found 1-bit register for signal <h_out_ff>.
+    Found 10-bit adder for signal <h_poz_d$addsub0000> created at line 100.
+    Found 10-bit register for signal <h_poz_ff>.
+    Found 10-bit adder for signal <h_x_d$addsub0000> created at line 113.
+    Found 10-bit comparator greatequal for signal <h_x_d$cmp_ge0000> created at line 110.
+    Found 10-bit comparator less for signal <h_x_d$cmp_lt0000> created at line 110.
+    Found 10-bit register for signal <h_x_ff>.
+    Found 1-bit register for signal <v_out_ff>.
+    Found 10-bit adder for signal <v_poz_d$addsub0000> created at line 95.
+    Found 10-bit register for signal <v_poz_ff>.
+    Found 10-bit adder for signal <v_y_d$addsub0000> created at line 119.
+    Found 10-bit comparator greater for signal <v_y_d$cmp_gt0000> created at line 115.
+    Found 10-bit comparator less for signal <v_y_d$cmp_lt0000> created at line 115.
+    Found 10-bit register for signal <v_y_ff>.
+    Summary:
+	inferred  42 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <vga> synthesized.
+
+
+Synthesizing Unit <timing>.
+    Related source file is "../../TIME_Module/TIME_module.v".
+    Found 3-bit register for signal <dec_digit_ff>.
+    Found 4-bit adder for signal <min_cnt_d$addsub0000> created at line 105.
+    Found 4-bit register for signal <min_cnt_ff>.
+    Found 4-bit register for signal <min_digit_ff>.
+    Found 31-bit adder for signal <period_cnt_d$addsub0000> created at line 119.
+    Found 31-bit register for signal <period_cnt_ff>.
+    Found 4-bit adder for signal <sec_cnt_d$addsub0000> created at line 116.
+    Found 4-bit register for signal <sec_cnt_ff>.
+    Found 4-bit register for signal <sec_digit_ff>.
+    Found 3-bit adder for signal <ten_cnt_d$addsub0000> created at line 112.
+    Found 3-bit register for signal <ten_cnt_ff>.
+    Summary:
+	inferred  53 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+Unit <timing> synthesized.
+
+
+Synthesizing Unit <mux>.
+    Related source file is "../../MUX_Module/MUX_module.v".
+    Found 4-bit 4-to-1 multiplexer for signal <digit_d>.
+    Found 4-bit register for signal <digit_ff>.
+    Summary:
+	inferred   4 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <mux> synthesized.
+
+
+Synthesizing Unit <sel>.
+    Related source file is "../../SEL_Module/SEL_module.v".
+    Found 10-bit comparator greatequal for signal <sel_digit_d$cmp_ge0000> created at line 49.
+    Found 10-bit comparator greatequal for signal <sel_digit_d$cmp_ge0001> created at line 50.
+    Found 10-bit comparator less for signal <sel_digit_d$cmp_lt0000> created at line 49.
+    Found 10-bit comparator less for signal <sel_digit_d$cmp_lt0001> created at line 50.
+    Found 2-bit register for signal <sel_digit_ff>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+Unit <sel> synthesized.
+
+
+Synthesizing Unit <mem>.
+    Related source file is "../../MEM_Module/MEM_module.v".
+    Found 33x3-bit ROM for signal <old_v_d_1$rom0000>.
+    Found 1-bit register for signal <display_block_ff>.
+    Found 6-bit register for signal <h_ff>.
+    Found 6-bit adder for signal <old_h_d_2$add0000> created at line 447.
+    Found 6-bit adder for signal <old_v_d_1$add0000> created at line 443.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0010> created at line 457.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0011> created at line 461.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0012> created at line 465.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0013> created at line 469.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0014> created at line 473.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0015> created at line 477.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0016> created at line 481.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0017> created at line 485.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0018> created at line 489.
+    Found 32-bit shifter logical left for signal <pixel_buffer_d$shift0019> created at line 493.
+    Found 1-bit register for signal <pixel_buffer_ff>.
+    Found 6-bit register for signal <v_ff>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred  14 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  10 Combinational logic shifter(s).
+Unit <mem> synthesized.
+
+
+Synthesizing Unit <out>.
+    Related source file is "../../OUT_Module/OUT_module.v".
+    Found 8-bit register for signal <color_out_ff>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <out> synthesized.
+
+
+Synthesizing Unit <Top>.
+    Related source file is "../TOP_module.v".
+Unit <Top> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 33x3-bit ROM                                          : 1
+# Adders/Subtractors                                   : 10
+ 10-bit adder                                          : 4
+ 3-bit adder                                           : 1
+ 31-bit adder                                          : 1
+ 4-bit adder                                           : 2
+ 6-bit adder                                           : 2
+# Registers                                            : 21
+ 1-bit register                                        : 5
+ 10-bit register                                       : 4
+ 2-bit register                                        : 1
+ 3-bit register                                        : 2
+ 31-bit register                                       : 1
+ 4-bit register                                        : 5
+ 6-bit register                                        : 2
+ 8-bit register                                        : 1
+# Comparators                                          : 8
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator greater                             : 1
+ 10-bit comparator less                                : 4
+# Multiplexers                                         : 1
+ 4-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <color_out_ff_0> in Unit <DUT_OUT> is equivalent to the following 7 FFs/Latches, which will be removed : <color_out_ff_1> <color_out_ff_2> <color_out_ff_3> <color_out_ff_4> <color_out_ff_5> <color_out_ff_6> <color_out_ff_7> 
+WARNING:Xst:1710 - FF/Latch <pixel_buffer_ff> (without init value) has a constant value of 0 in block <DUT_MEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <color_out_ff_0> (without init value) has a constant value of 0 in block <DUT_OUT>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <digit_ff_0> is unconnected in block <DUT_MUX>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <digit_ff_1> is unconnected in block <DUT_MUX>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <digit_ff_2> is unconnected in block <DUT_MUX>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <sel_digit_ff_0> is unconnected in block <DUT_SEL>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <sel_digit_ff_1> is unconnected in block <DUT_SEL>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <digit_ff_3> is unconnected in block <DUT_MUX>.
+WARNING:Xst:2677 - Node <dec_digit_ff_0> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <dec_digit_ff_1> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <dec_digit_ff_2> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <sec_digit_ff_0> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <sec_digit_ff_1> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <sec_digit_ff_2> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <sec_digit_ff_3> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <min_digit_ff_0> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <min_digit_ff_1> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <min_digit_ff_2> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:2677 - Node <min_digit_ff_3> of sequential type is unconnected in block <DUT_TM>.
+WARNING:Xst:1290 - Hierarchical block <DUT_MUX> is unconnected in block <Top>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <DUT_SEL> is unconnected in block <Top>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <DUT_MEM> is unconnected in block <Top>.
+   It will be removed from the design.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 8
+ 10-bit adder                                          : 4
+ 3-bit adder                                           : 1
+ 31-bit adder                                          : 1
+ 4-bit adder                                           : 2
+# Registers                                            : 111
+ Flip-Flops                                            : 111
+# Comparators                                          : 8
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator greater                             : 1
+ 10-bit comparator less                                : 4
+# Multiplexers                                         : 1
+ 4-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <pixel_buffer_ff> (without init value) has a constant value of 0 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <color_out_ff_0> in Unit <out> is equivalent to the following 7 FFs/Latches, which will be removed : <color_out_ff_1> <color_out_ff_2> <color_out_ff_3> <color_out_ff_4> <color_out_ff_5> <color_out_ff_6> <color_out_ff_7> 
+WARNING:Xst:1710 - FF/Latch <DUT_OUT/color_out_ff_0> (without init value) has a constant value of 0 in block <Top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <DUT_MUX/digit_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_MUX/digit_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_MUX/digit_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_MUX/digit_ff_0> of sequential type is unconnected in block <Top>.
+
+Optimizing unit <Top> ...
+
+Optimizing unit <vga> ...
+
+Optimizing unit <timing> ...
+
+Optimizing unit <sel> ...
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_9> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_8> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_7> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_6> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_5> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_4> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/v_y_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_9> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_8> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_7> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_6> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_5> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_4> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_VGA/h_x_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_digit_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_digit_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_digit_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_digit_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_digit_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_digit_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_digit_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_digit_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_cnt_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_cnt_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_cnt_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/min_cnt_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/dec_digit_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/dec_digit_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/dec_digit_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_cnt_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_cnt_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_cnt_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/sec_cnt_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_30> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_29> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_28> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_27> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_26> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_25> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_24> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_23> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_22> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_21> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_20> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_19> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_18> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_17> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_16> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_15> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_14> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_13> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_12> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_11> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_10> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_9> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_8> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_7> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_6> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_5> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_4> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_3> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/period_cnt_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/ten_cnt_ff_2> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/ten_cnt_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_TM/ten_cnt_ff_0> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_SEL/sel_digit_ff_1> of sequential type is unconnected in block <Top>.
+WARNING:Xst:2677 - Node <DUT_SEL/sel_digit_ff_0> of sequential type is unconnected in block <Top>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Top, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 23
+ Flip-Flops                                            : 23
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Top.ngr
+Top Level Output File Name         : Top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 12
+
+Cell Usage :
+# BELS                             : 97
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 18
+#      LUT2                        : 10
+#      LUT3                        : 3
+#      LUT3_D                      : 1
+#      LUT4                        : 17
+#      LUT4_D                      : 2
+#      LUT4_L                      : 3
+#      MUXCY                       : 18
+#      VCC                         : 1
+#      XORCY                       : 20
+# FlipFlops/Latches                : 23
+#      FDC                         : 23
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 1
+#      OBUF                        : 10
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                       30  out of   4656     0%  
+ Number of Slice Flip Flops:             23  out of   9312     0%  
+ Number of 4 input LUTs:                 57  out of   9312     0%  
+ Number of IOs:                          12
+ Number of bonded IOBs:                  12  out of    232     5%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk_top                            | BUFGP                  | 1     |
+DUT_CLK/clk_25_out1                | BUFG                   | 22    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst_top                            | IBUF                   | 23    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 4.679ns (Maximum Frequency: 213.707MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 4.063ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_top'
+  Clock period: 2.131ns (frequency: 469.274MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.131ns (Levels of Logic = 1)
+  Source:            DUT_CLK/clk_25_out (FF)
+  Destination:       DUT_CLK/clk_25_out (FF)
+  Source Clock:      clk_top rising
+  Destination Clock: clk_top rising
+
+  Data Path: DUT_CLK/clk_25_out to DUT_CLK/clk_25_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.514   0.380  DUT_CLK/clk_25_out (DUT_CLK/clk_25_out1)
+     INV:I->O              1   0.612   0.357  DUT_CLK/clk_25_out_not00011_INV_0 (DUT_CLK/clk_25_out_not0001)
+     FDC:D                     0.268          DUT_CLK/clk_25_out
+    ----------------------------------------
+    Total                      2.131ns (1.394ns logic, 0.737ns route)
+                                       (65.4% logic, 34.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'DUT_CLK/clk_25_out1'
+  Clock period: 4.679ns (frequency: 213.707MHz)
+  Total number of paths / destination ports: 482 / 22
+-------------------------------------------------------------------------
+Delay:               4.679ns (Levels of Logic = 4)
+  Source:            DUT_VGA/h_poz_ff_3 (FF)
+  Destination:       DUT_VGA/v_out_ff (FF)
+  Source Clock:      DUT_CLK/clk_25_out1 rising
+  Destination Clock: DUT_CLK/clk_25_out1 rising
+
+  Data Path: DUT_VGA/h_poz_ff_3 to DUT_VGA/v_out_ff
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.514   0.603  DUT_VGA/h_poz_ff_3 (DUT_VGA/h_poz_ff_3)
+     LUT4:I0->O            2   0.612   0.383  DUT_VGA/h_out_d_cmp_eq00001_SW1 (N8)
+     LUT4:I3->O            1   0.612   0.360  DUT_VGA/h_poz_d_cmp_eq00011_1 (DUT_VGA/h_poz_d_cmp_eq00011)
+     LUT4_L:I3->LO         1   0.612   0.103  DUT_VGA/h_poz_d_and0000 (DUT_VGA/h_poz_d_and0000)
+     LUT4:I3->O            1   0.612   0.000  DUT_VGA/v_out_d40 (DUT_VGA/v_out_d)
+     FDC:D                     0.268          DUT_VGA/v_out_ff
+    ----------------------------------------
+    Total                      4.679ns (3.230ns logic, 1.449ns route)
+                                       (69.0% logic, 31.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'DUT_CLK/clk_25_out1'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              4.063ns (Levels of Logic = 1)
+  Source:            DUT_VGA/h_out_ff (FF)
+  Destination:       h_out (PAD)
+  Source Clock:      DUT_CLK/clk_25_out1 rising
+
+  Data Path: DUT_VGA/h_out_ff to h_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.514   0.380  DUT_VGA/h_out_ff (DUT_VGA/h_out_ff)
+     OBUF:I->O                 3.169          h_out_OBUF (h_out)
+    ----------------------------------------
+    Total                      4.063ns (3.683ns logic, 0.380ns route)
+                                       (90.6% logic, 9.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.97 secs
+ 
+--> 
+
+Total memory usage is 255668 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  103 (   0 filtered)
+Number of infos    :   12 (   0 filtered)
+

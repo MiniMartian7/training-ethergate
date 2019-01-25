@@ -30,3 +30,8 @@ package monitor;
     Monitor ev_xa_mon, ev_wa_mon;
 endpackage
 
+package enviroment;
+    `include "class_enviroment.sv"
+
+    Enviroment ev_tb;
+endpackage

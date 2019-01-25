@@ -2,6 +2,7 @@
 `define DRIVER
 
 import packet::*;
+import lib::*;
 
 class Driver;
     virtual sif_i driver_i;
@@ -23,15 +24,22 @@ class Driver;
     endtask
 */
     task run();
-        $display("--@%gns [DRIVER] Run Task--\n", $time);
+        $display("--%t [DRIVER] Run Task--\n", $time);
 
         driver_i.reset();/*initial reset*/
 
-     	foreach(op_q[i]) driver_i.send(op_q[i].data, op_q[i].addr, op_q[i].op);
+     	foreach(op_q[i]) begin
+		
+		driver_i.send(op_q[i].data, op_q[i].addr, op_q[i].op);
+		$display("--%t [DRIVER] Drive Packet done--\n", $time);
+	end
 
-        /*creat the idle state*/
+	driver_i.send(0,0,IDLE);//idle op
+	repeat(3) @driver_i.driver_cb;
 
-        $display("--@%gns [DRIVER] End Run Task--\n", $time);
+        $finish;
+
+        $display("--%t [DRIVER] End Run Task--\n", $time);
     endtask
 endclass : Driver
 `endif

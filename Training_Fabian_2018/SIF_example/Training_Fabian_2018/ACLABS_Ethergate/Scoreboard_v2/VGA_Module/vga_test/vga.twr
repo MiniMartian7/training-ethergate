@@ -1,0 +1,90 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 5 -n
+3 -fastpaths -xml vga.twx vga.ncd -o vga.twr vga.pcf
+
+Design file:              vga.ncd
+Physical constraint file: vga.pcf
+Device,package,speed:     xc3s500e,fg320,-5 (PRODUCTION 1.27 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock clk_vga to Pad
+-------------------+------------+------------------+--------+
+                   | clk (edge) |                  | Clock  |
+Destination        |   to PAD   |Internal Clock(s) | Phase  |
+-------------------+------------+------------------+--------+
+h_out_vga          |    9.112(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<0>|    7.104(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<1>|    7.503(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<2>|    7.281(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<3>|    6.517(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<4>|    6.566(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<5>|    6.991(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<6>|    6.552(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<7>|    7.428(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<8>|    7.080(R)|clk_vga_BUFGP     |   0.000|
+horizontal_x_vga<9>|    7.266(R)|clk_vga_BUFGP     |   0.000|
+v_out_vga          |    9.164(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<0>  |    7.360(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<1>  |    7.756(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<2>  |    7.736(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<3>  |    7.315(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<4>  |    7.171(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<5>  |    7.357(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<6>  |    7.108(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<7>  |    7.533(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<8>  |    7.068(R)|clk_vga_BUFGP     |   0.000|
+vertical_y_vga<9>  |    7.738(R)|clk_vga_BUFGP     |   0.000|
+-------------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk_vga
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_vga        |    4.582|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Tue Jul 17 18:11:31 2018 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 141 MB
+
+
+

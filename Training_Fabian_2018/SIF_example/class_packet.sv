@@ -16,7 +16,7 @@ class Packet;
     endfunction
 
     function void display();
-      $display("--@%gns [Packet] Number|Operation|Data|Address :: %d|%b|%h|%h--\n", $time, nr_pak, op, data, addr);
+      $display("--%t [Packet] Number|Operation|Data|Address :: %d|%b|%h|%h--\n", $time, nr_pak, op, data, addr);
     endfunction
 
 	/*ar trebui sa existe o metoda de compare care sa fie folosita mai departe in la comparari*/

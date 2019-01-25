@@ -20,109 +20,126 @@
 # Loading work.monitor(fast)
 # Loading work.driver(fast)
 # Loading work.generator(fast)
+# Loading work.enviroment(fast)
 # Loading work.sif_test_sv_unit(fast)
 # Loading work.sif_test(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
+add wave -position insertpoint  \
+sim:/sif_top/TOP_i/clk \
+sim:/sif_top/TOP_i/rst_n \
+sim:/sif_top/TOP_i/xa_wr_s \
+sim:/sif_top/TOP_i/xa_rd_s \
+sim:/sif_top/TOP_i/xa_addr \
+sim:/sif_top/TOP_i/xa_data_rd \
+sim:/sif_top/TOP_i/xa_data_wr
 run -all
-# --@0ns [ENVIROMENT] Build Task--
+# --                   0 [ENVIROMENT] Build Task--
 # 
-# --@0ns [ENVIROMENT] End Build Task--
+# --                   0 [ENVIROMENT] End Build Task--
 # 
-# --@0ns [ENVIROMENT] Init Task--
+# --                   0 [ENVIROMENT] Init Task--
 # 
-# --@0ns [GENERATOR] Main Task--
+# --                   0 [GENERATOR] Main Task--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           1|101|b18c|de85--
+# --                   0 [Packet] Number|Operation|Data|Address ::           1|101|b18c|de85--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           2|110|271b|98e3--
+# --                   0 [Packet] Number|Operation|Data|Address ::           2|110|271b|98e3--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           3|110|9589|9f5f--
+# --                   0 [Packet] Number|Operation|Data|Address ::           3|110|9589|9f5f--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           4|101|7ebb|e581--
+# --                   0 [Packet] Number|Operation|Data|Address ::           4|101|7ebb|e581--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           5|100|dee3|2f9f--
+# --                   0 [Packet] Number|Operation|Data|Address ::           5|100|dee3|2f9f--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           6|110|050e|57df--
+# --                   0 [Packet] Number|Operation|Data|Address ::           6|110|050e|57df--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           7|101|b8e4|e4ea--
+# --                   0 [Packet] Number|Operation|Data|Address ::           7|101|b8e4|e4ea--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           8|101|0b96|8ea9--
+# --                   0 [Packet] Number|Operation|Data|Address ::           8|101|0b96|8ea9--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::           9|101|82be|d8b3--
+# --                   0 [Packet] Number|Operation|Data|Address ::           9|101|82be|d8b3--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          10|101|25c5|5ddd--
+# --                   0 [Packet] Number|Operation|Data|Address ::          10|101|25c5|5ddd--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          11|000|1bcd|853e--
+# --                   0 [Packet] Number|Operation|Data|Address ::          11|000|1bcd|853e--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          12|100|f37f|e332--
+# --                   0 [Packet] Number|Operation|Data|Address ::          12|100|f37f|e332--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          13|110|1630|731e--
+# --                   0 [Packet] Number|Operation|Data|Address ::          13|110|1630|731e--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          14|110|e3ce|8165--
+# --                   0 [Packet] Number|Operation|Data|Address ::          14|110|e3ce|8165--
 # 
-# --@0ns [Packet] Number|Operation|Data|Address ::          15|110|f669|73b4--
+# --                   0 [Packet] Number|Operation|Data|Address ::          15|110|f669|73b4--
 # 
-# --@0ns [GENERATOR] End Main Task--
+# --                   0 [GENERATOR] End Main Task--
 # 
-# --@0ns [ENVIROMENT] End Init Task--
+# --                   0 [ENVIROMENT] End Init Task--
 # 
-# --@0ns [ENVIROMENT] Run Task--
+# --                   0 [ENVIROMENT] Run Task--
 # 
-# --@0ns [DRIVER] Run Task--
+# --                   0 [DRIVER] Run Task--
 # 
-# --@0ns [INTERFACE] Reset Task--
+# --                   0 [INTERFACE] Reset Task--
 # 
-# --@0ns [XA_MONITOR] Run Task--
+# --                   0 [XA_MONITOR] Run Task--
 # 
-# --@1e+07ns [XA_MONITOR] xxxx|xxxx|0000--
+# --            90000000 [INTERFACE] End Reset Task--
 # 
-# --@2e+07ns [INTERFACE] End Reset Task--
+# --           110000000 [DRIVER] Drive Packet done--
 # 
-# --@2e+07ns [INTERFACE] Send Task--
+# --           130000000 [DRIVER] Drive Packet done--
 # 
-# --@3e+07ns [XA_MONITOR] xxxx|xxxx|xxxx--
+# --           130000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|de85|1--
 # 
-# --@3e+07ns DELAY--
+# --           150000000 [DRIVER] Drive Packet done--
 # 
-# --@5e+07ns [XA_MONITOR] b18c|de85|b18c--
+# --           150000000 [XA_MONITOR] WR_Data|Addr|Strobe::271b|98e3|1--
 # 
-# --@5e+07ns DELAY--
+# --           170000000 [DRIVER] Drive Packet done--
 # 
-# --@7e+07ns [XA_MONITOR] b18c|de85|b18c--
+# --           170000000 [XA_MONITOR] WR_Data|Addr|Strobe::9589|9f5f|1--
 # 
-# --@7e+07ns [INTERFACE] End Send Task--
+# --           190000000 [DRIVER] Drive Packet done--
 # 
-# --@7e+07ns [INTERFACE] Send Task--
+# --           190000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|e581|1--
 # 
-# --@9e+07ns [XA_MONITOR] b18c|de85|b18c--
+# --           210000000 [DRIVER] Drive Packet done--
 # 
-# --@9e+07ns DELAY--
+# --           230000000 [DRIVER] Drive Packet done--
 # 
-# --@1.1e+08ns [XA_MONITOR] 271b|98e3|0000--
+# --           230000000 [XA_MONITOR] WR_Data|Addr|Strobe::050e|57df|1--
 # 
-# --@1.1e+08ns DELAY--
+# --           250000000 [DRIVER] Drive Packet done--
 # 
-# --@1.3e+08ns [XA_MONITOR] 271b|98e3|0000--
+# --           250000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|e4ea|1--
 # 
-# --@1.3e+08ns [INTERFACE] End Send Task--
+# --           270000000 [DRIVER] Drive Packet done--
 # 
-# --@1.3e+08ns [INTERFACE] Send Task--
+# --           270000000 [XA_MONITOR] RD_Data|Addr|Strobe::e46a|8ea9|1--
 # 
-# --@1.5e+08ns [XA_MONITOR] 271b|98e3|0000--
+# --           290000000 [DRIVER] Drive Packet done--
 # 
-# --@1.5e+08ns DELAY--
+# --           290000000 [XA_MONITOR] RD_Data|Addr|Strobe::8e29|d8b3|1--
 # 
-# --@1.7e+08ns [XA_MONITOR] 9589|9f5f|0000--
+# --           310000000 [DRIVER] Drive Packet done--
 # 
-# --@1.7e+08ns DELAY--
+# --           310000000 [XA_MONITOR] RD_Data|Addr|Strobe::d933|5ddd|1--
 # 
-# --@1.9e+08ns [XA_MONITOR] 9589|9f5f|0000--
+# --           330000000 [DRIVER] Drive Packet done--
 # 
-# --@1.9e+08ns [INTERFACE] End Send Task--
+# --           350000000 [DRIVER] Drive Packet done--
 # 
-# --@1.9e+08ns [INTERFACE] Send Task--
+# --           370000000 [DRIVER] Drive Packet done--
 # 
-# ** Note: $finish    : class_monitor.sv(36)
-#    Time: 210 us  Iteration: 1  Region: /sif_test_sv_unit::Enviroment::run
+# --           370000000 [XA_MONITOR] WR_Data|Addr|Strobe::1630|731e|1--
+# 
+# --           390000000 [DRIVER] Drive Packet done--
+# 
+# --           390000000 [XA_MONITOR] WR_Data|Addr|Strobe::e3ce|8165|1--
+# 
+# --           410000000 [XA_MONITOR] WR_Data|Addr|Strobe::f669|73b4|1--
+# 
+# ** Note: $finish    : class_driver.sv(40)
+#    Time: 470 us  Iteration: 1  Region: /enviroment::Enviroment::run
 # 1
-# Break in Task monitor/Monitor::xa_run at class_monitor.sv line 36
+# Break in Task driver/Driver::run at class_driver.sv line 40

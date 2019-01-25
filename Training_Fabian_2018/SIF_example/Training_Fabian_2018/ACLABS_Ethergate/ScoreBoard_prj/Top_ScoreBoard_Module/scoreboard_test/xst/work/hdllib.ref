@@ -1,0 +1,6 @@
+MO clk NULL ../../CLK_Module/CLK_module.v vlg32/clk.bin 1531741852
+MO mem NULL ../../MEM_Module/MEM_module.v vlg0B/mem.bin 1531741852
+MO Top NULL ../Top_Module.v vlg4F/_top.bin 1531741852
+MO enable NULL ../../EN_Module/EN_module.v vlg67/enable.bin 1531741852
+MO vga NULL ../../VGA_Module/VGA_module.v vlg6A/vga.bin 1531741852
+MO timing NULL ../../Timing_Module/Timing_module.v vlg64/timing.bin 1531741852
