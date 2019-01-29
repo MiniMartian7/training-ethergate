@@ -7,7 +7,12 @@ import lib::*;
 /*de rezolvat: citirea read-ului care are o intarziere fata de driver-ul pt adresa
   check it taskuri virtuale
   codul de monitor ar fi bine sa fie in interfata*/
+/*
+	tascurile pentru monitor pot fi puse in interfata de maniera, unu pt citirea de adresa si date scrise si unu pentru datele rezultate
 
+	pentru combaterea delay-ului pe pinul de date rezultante, se poate folosii metoda lui jivet, 
+	controlarea citirii prin manipularea semnalului de strobe ca a unui clock de citire
+*/
 
 class Monitor;/*clasa de monitor trebuie sa fie comuna pentru ambele monitoare*/
     virtual sif_i mon_i;

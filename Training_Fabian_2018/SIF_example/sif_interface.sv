@@ -6,7 +6,7 @@ interface sif_i(input bit clk);
     clocking xa_mon_cb @(posedge clk);
         input xa_addr, xa_data_wr;
         input xa_data_rd;
-	input xa_wr_s, xa_rd_s;
+	    input xa_wr_s, xa_rd_s;
     endclocking
 
     clocking wa_mon_cb @(posedge clk);
@@ -47,12 +47,19 @@ interface sif_i(input bit clk);
 /*----------------------------------------------the send function is called from driver*/
     task send(input logic [15:0] sent_data, sent_addr, input logic [2:0] flags);
 	
-	@driver_cb;
+	    @driver_cb;
 	
         DUT.xa_addr <= sent_addr;
         DUT.xa_data_wr <= sent_data;
         {DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} <= flags;
 
+    endtask
+
+    task read();    
+        @(posedge DUT.xa_rd_s) begin/*it detects the posedge and knows that one clock after it, it can read*/
+            xa_mon_cb.xa_data_rd <= DUT.xa_data_rd;
+        end
+        
     endtask
 
 endinterface : sif_i
@@ -61,29 +68,4 @@ endinterface : sif_i
 /*Modports are only used in interface port and virtual interface declarations. They are not used to reference individual interface items.*/
 
 /*modports are necessary when you want to control other signal from a DUT that are not included in the same clocking bloc|
-but also some simulators can not compile without the existance of the modports
-    modport X_MONITOR(
-        clocking xmon_cb
-    );
-
-    modport W_MONITOR(
-        clocking wmon_cb
-    );
-
-    modport DRIVER(
-        clocking driver_cb
-    );
-
-    modport DUT(
-        clocking dut_cb
-    );
-
-    modport TB(
-        clocking tb_cb
-    );
-
-    /*clocking driver_cb @(posedge clk);
-        output xa_addr, xa_data_wr;
-        output xa_wr_s, xa_rd_s;
-        output rst_n;
-    endclocking */
+but also some simulators can not compile without the existance of the modports*/
