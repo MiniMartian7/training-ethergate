@@ -1,8 +1,0 @@
-MO out NULL ../OUT_module.v vlg14/out.bin 1532594845
-MO sel NULL ../SEL_module.v vlg20/sel.bin 1532594845
-MO clk NULL ../CLK_module.v vlg32/clk.bin 1532594845
-MO mem NULL ../MEM_module.v vlg0B/mem.bin 1532594845
-MO Top NULL ../TOP_module.v vlg4F/_top.bin 1532594845
-MO vga NULL ../VGA_module.v vlg6A/vga.bin 1532594845
-MO mux NULL ../MUX_module.v vlg66/mux.bin 1532594845
-MO timing NULL ../TIME_module.v vlg64/timing.bin 1532594845

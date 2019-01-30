@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\Users\Mackintosh\Documents\ACLABS_Ethergate\Scoreboard_v2\TOP_Module\TOP_tb\top_test_tb\Top.ncd
-OUTFILE=C:\Users\Mackintosh\Documents\ACLABS_Ethergate\Scoreboard_v2\TOP_Module\TOP_tb\top_test_tb\Top.bit
-FAMILY=Spartan3E
-PART=xc3s500e-5fg320
-WORKINGDIR=C:\Users\Mackintosh\Documents\ACLABS_Ethergate\Scoreboard_v2\TOP_Module\TOP_tb\top_test_tb
-LICENSE=WebPack
-USER_INFO=211487584_0_0_417

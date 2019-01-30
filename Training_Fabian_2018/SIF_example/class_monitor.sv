@@ -14,43 +14,42 @@ import lib::*;
 	controlarea citirii prin manipularea semnalului de strobe ca a unui clock de citire
 */
 
-class Monitor;/*clasa de monitor trebuie sa fie comuna pentru ambele monitoare*/
+virtual class Monitor;/*clasa de monitor trebuie sa fie comuna pentru ambele monitoare*/
     virtual sif_i mon_i;
 
-	integer nr = 0;
+    virtual task run(); endtask
+endclass : Monitor
 
+class XA_Monitor extends Monitor;
     function new(virtual sif_i mon_i);
         this.mon_i = mon_i;
     endfunction
 
-    task xa_run;
+    task run();
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
+		forever begin
+			xa_mon_pak = new();
 
-	forever begin
-		xa_mon_pak = new();
+			mon_i.write(xa_mon_pak, xa_mon_q, "xa");
 
-		@mon_i.xa_mon_cb;	
-
-		if(mon_i.xa_mon_cb.xa_wr_s) begin
-			xa_mon_pak.addr = mon_i.xa_mon_cb.xa_addr;
-			xa_mon_pak.data = mon_i.xa_mon_cb.xa_data_wr;
-			xa_mon_pak.op = WRITE;
-	
-			$display("--%t [XA_MONITOR] WR_Data|Addr|Strobe::%h|%h|%b--\n", $time, xa_mon_pak.data, xa_mon_pak.addr, mon_i.xa_mon_cb.xa_wr_s);
-			
+			//xa_mon_pak = new();
 		end
-		else if(mon_i.xa_mon_cb.xa_rd_s) begin
-	
-			xa_mon_pak.addr = mon_i.xa_mon_cb.xa_addr;
-			xa_mon_pak.data = mon_i.xa_mon_cb.xa_data_rd;
-			xa_mon_pak.op = READ;		
-	
-			$display("--%t [XA_MONITOR] RD_Data|Addr|Strobe::%h|%h|%b--\n", $time, xa_mon_pak.data, xa_mon_pak.addr, mon_i.xa_mon_cb.xa_rd_s);
-		end	
-		xa_mon_q.push_back(xa_mon_pak);
-	end
-		
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
     endtask
-endclass : Monitor
+endclass : XA_Monitor
+/*--------------------------------------------------------------------------------*/
+class WA_Monitor extends Monitor;
+    function new(virtual sif_i mon_i);
+        this.mon_i = mon_i;
+    endfunction
+    task run();
+	$display("--%t [WA_MONITOR] Run Task--\n", $time);
+		forever begin
+			wa_mon_pak = new();
+
+			mon_i.write(wa_mon_pak, wa_mon_q, "wa");
+		end
+	$display("--%t [WA_MONITOR] Run Task--\n", $time);
+    endtask
+endclass : WA_Monitor
 `endif

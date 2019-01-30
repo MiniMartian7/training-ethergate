@@ -1,8 +1,0 @@
-verilog work "../../VGA_Module/VGA_module.v"
-verilog work "../../TIME_Module/TIME_module.v"
-verilog work "../../SEL_Module/SEL_module.v"
-verilog work "../../OUT_Module/OUT_module.v"
-verilog work "../../MUX_Module/MUX_module.v"
-verilog work "../../MEM_Module/MEM_module.v"
-verilog work "../../CLK_Module/CLK_module.v"
-verilog work "../TOP_module.v"

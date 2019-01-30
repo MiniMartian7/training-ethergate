@@ -42,7 +42,8 @@ class Enviroment;
         /*the monitor and driver are parallel threads, fork...join_any*/
 	fork
 		ev_driver.run();
-		ev_xa_mon.xa_run();
+		ev_xa_mon.run();
+		ev_wa_mon.run();
 	join
 	
         /*create a idle situation to be responsive to specific externela stimulus*/

@@ -11,12 +11,13 @@
 # vsim +UVM_TESTNAME=sw_test -coverage tb_optimized 
 # Loading sv_std.std
 # Loading work.sif_top(fast)
+# Loading work.lib(fast)
+# Loading work.packet(fast)
+# Loading work.sif_interface_sv_unit(fast)
 # Loading work.sif_i(fast)
 # Loading work.sif(fast)
 # Loading work.dff16_en(fast)
 # Loading work.dff_en(fast)
-# Loading work.lib(fast)
-# Loading work.packet(fast)
 # Loading work.monitor(fast)
 # Loading work.driver(fast)
 # Loading work.generator(fast)
@@ -29,9 +30,12 @@ sim:/sif_top/TOP_i/clk \
 sim:/sif_top/TOP_i/rst_n \
 sim:/sif_top/TOP_i/xa_wr_s \
 sim:/sif_top/TOP_i/xa_rd_s \
+sim:/sif_top/TOP_i/wa_wr_s \
 sim:/sif_top/TOP_i/xa_addr \
+sim:/sif_top/TOP_i/wa_addr \
 sim:/sif_top/TOP_i/xa_data_rd \
-sim:/sif_top/TOP_i/xa_data_wr
+sim:/sif_top/TOP_i/xa_data_wr \
+sim:/sif_top/TOP_i/wa_data_wr
 run -all
 # --                   0 [ENVIROMENT] Build Task--
 # 
@@ -83,47 +87,43 @@ run -all
 # 
 # --                   0 [XA_MONITOR] Run Task--
 # 
+# --                   0 [WA_MONITOR] Run Task--
+# 
 # --            90000000 [INTERFACE] End Reset Task--
 # 
 # --           110000000 [DRIVER] Drive Packet done--
 # 
 # --           130000000 [DRIVER] Drive Packet done--
 # 
-# --           130000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|de85|1--
-# 
 # --           150000000 [DRIVER] Drive Packet done--
 # 
-# --           150000000 [XA_MONITOR] WR_Data|Addr|Strobe::271b|98e3|1--
+# --           150000000 [XA_MONITOR] WR_Data|Addr|Strobe::271b|98e3--
 # 
 # --           170000000 [DRIVER] Drive Packet done--
 # 
-# --           170000000 [XA_MONITOR] WR_Data|Addr|Strobe::9589|9f5f|1--
+# --           170000000 [WA_MONITOR] WR_Data|Addr|Strobe::271b|98e3--
+# 
+# --           170000000 [XA_MONITOR] WR_Data|Addr|Strobe::9589|9f5f--
 # 
 # --           190000000 [DRIVER] Drive Packet done--
 # 
-# --           190000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|e581|1--
+# --           190000000 [WA_MONITOR] WR_Data|Addr|Strobe::9589|9f5f--
 # 
 # --           210000000 [DRIVER] Drive Packet done--
 # 
 # --           230000000 [DRIVER] Drive Packet done--
 # 
-# --           230000000 [XA_MONITOR] WR_Data|Addr|Strobe::050e|57df|1--
+# --           230000000 [XA_MONITOR] WR_Data|Addr|Strobe::050e|57df--
 # 
 # --           250000000 [DRIVER] Drive Packet done--
 # 
-# --           250000000 [XA_MONITOR] RD_Data|Addr|Strobe::0000|e4ea|1--
+# --           250000000 [WA_MONITOR] WR_Data|Addr|Strobe::050e|57df--
 # 
 # --           270000000 [DRIVER] Drive Packet done--
 # 
-# --           270000000 [XA_MONITOR] RD_Data|Addr|Strobe::e46a|8ea9|1--
-# 
 # --           290000000 [DRIVER] Drive Packet done--
 # 
-# --           290000000 [XA_MONITOR] RD_Data|Addr|Strobe::8e29|d8b3|1--
-# 
 # --           310000000 [DRIVER] Drive Packet done--
-# 
-# --           310000000 [XA_MONITOR] RD_Data|Addr|Strobe::d933|5ddd|1--
 # 
 # --           330000000 [DRIVER] Drive Packet done--
 # 
@@ -131,13 +131,19 @@ run -all
 # 
 # --           370000000 [DRIVER] Drive Packet done--
 # 
-# --           370000000 [XA_MONITOR] WR_Data|Addr|Strobe::1630|731e|1--
+# --           370000000 [XA_MONITOR] WR_Data|Addr|Strobe::1630|731e--
 # 
 # --           390000000 [DRIVER] Drive Packet done--
 # 
-# --           390000000 [XA_MONITOR] WR_Data|Addr|Strobe::e3ce|8165|1--
+# --           390000000 [WA_MONITOR] WR_Data|Addr|Strobe::1630|731e--
 # 
-# --           410000000 [XA_MONITOR] WR_Data|Addr|Strobe::f669|73b4|1--
+# --           390000000 [XA_MONITOR] WR_Data|Addr|Strobe::e3ce|8165--
+# 
+# --           410000000 [WA_MONITOR] WR_Data|Addr|Strobe::e3ce|8165--
+# 
+# --           410000000 [XA_MONITOR] WR_Data|Addr|Strobe::f669|73b4--
+# 
+# --           430000000 [WA_MONITOR] WR_Data|Addr|Strobe::f669|73b4--
 # 
 # ** Note: $finish    : class_driver.sv(40)
 #    Time: 470 us  Iteration: 1  Region: /enviroment::Enviroment::run

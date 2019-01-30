@@ -1,5 +1,0 @@
-NET "clk_vga" LOC = B8;
-NET "rst_vga" LOC = G18;
-
-NET "v_out_vga" LOC = U3;
-NET "h_out_vga" LOC = T4;
