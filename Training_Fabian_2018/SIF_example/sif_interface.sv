@@ -62,7 +62,7 @@ interface sif_i(input bit clk);
     task write(Packet mon_pak, mon_q[$], string mon);
 	@(posedge clk);
 
-	if(mon == "xa") begin	
+	if(mon == "xa") begin
 		if(xa_mon_cb.xa_wr_s) begin
 			mon_pak.addr = xa_mon_cb.xa_addr;
 			mon_pak.data = xa_mon_cb.xa_data_wr;
@@ -81,15 +81,31 @@ interface sif_i(input bit clk);
 
 			mon_q.push_back(mon_pak);
 		
-			$display("--%t [WA_MONITOR] WR_Data|Addr|Strobe::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
+			$display("--%t [WA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
 		end
 	end
     endtask
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
-    task read(Packet mon_pak, mon_q, string mon);
-	
+    task read(Packet mon_pak,  mon_q[$], string mon);
+
+	if(mon == "xa") begin
+		if(xa_mon_cb.xa_rd_s) begin
+			mon_pak.addr = xa_mon_cb.xa_addr;
+			mon_pak.op = READ;
+			
+			mon_q.push_back(mon_pak);
+		end
+		
+		if(xa_mon_q[xa_mon_q.size() - 1].op == READ) begin
+			xa_mon_q[xa_mon_q.size() - 1].data = xa_mon_cb.xa_data_rd;
+		
+			$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
+		end
+	end
+
+
     endtask
 
 

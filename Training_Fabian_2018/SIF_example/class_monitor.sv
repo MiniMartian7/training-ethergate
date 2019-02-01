@@ -32,7 +32,7 @@ class XA_Monitor extends Monitor;
 
 			mon_i.write(xa_mon_pak, xa_mon_q, "xa");
 
-			//xa_mon_pak = new();
+			mon_i.read(xa_mon_pak, xa_mon_q, "xa");/*send the current and previous packet for evaluation*/
 		end
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
     endtask
