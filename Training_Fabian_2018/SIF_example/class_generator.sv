@@ -12,7 +12,7 @@ class Generator;
     integer nr_of_pak;
 
     parameter MIN_TRANS = 10;
-    parameter MAX_TRANS = 20;
+    parameter MAX_TRANS = 50;
 
     function new();/*the number of transaction is randomized in the constructor of the gen in the build task*/
         nr_of_pak = $urandom_range(MIN_TRANS, MAX_TRANS);
@@ -22,7 +22,7 @@ class Generator;
         $display("--%t [GENERATOR] Main Task--\n", $time);
 
         repeat (nr_of_pak) begin
-            op_pak = new();
+            op_pak = new(); 
 
             assert (op_pak.randomize()) else $fatal(0, "--%t [GENERATOR] Packet randomization failed--\n", $time);
 

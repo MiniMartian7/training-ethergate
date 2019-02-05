@@ -12,6 +12,7 @@ class Packet;
     static integer nr_pak = 0;
 
     function new();
+      /*srandom($urandom());generate seed*/
       nr_pak ++;
     endfunction
 

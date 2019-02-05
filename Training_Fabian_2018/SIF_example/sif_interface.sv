@@ -59,28 +59,33 @@ interface sif_i(input bit clk);
     endtask
 /*------------------------------------------------------------------------------------------------------*/
     
-    task write(Packet mon_pak, mon_q[$], string mon);
-	@(posedge clk);
-
+    task write(Packet mon_pak, mon_q[$], string mon);	
+	@xa_mon_cb;
+	
+	/*for the read process there is no need for reset check cause is done in the same cycle*/
 	if(mon == "xa") begin
 		if(xa_mon_cb.xa_wr_s) begin
+			mon_pak = new();
+
 			mon_pak.addr = xa_mon_cb.xa_addr;
 			mon_pak.data = xa_mon_cb.xa_data_wr;
 			mon_pak.op = WRITE;
 
 			mon_q.push_back(mon_pak);
-		
-			$display("--%t [XA_MONITOR] WR_Data|Addr|Strobe::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
+			
+			$display("--%t [XA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
 		end
 	end
 	else if(mon == "wa") begin
 		if(wa_mon_cb.wa_wr_s) begin
+			mon_pak = new();
+				
 			mon_pak.addr = wa_mon_cb.wa_addr;
 			mon_pak.data = wa_mon_cb.wa_data_wr;
 			mon_pak.op = WRITE;
 
 			mon_q.push_back(mon_pak);
-		
+			
 			$display("--%t [WA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
 		end
 	end
@@ -88,27 +93,37 @@ interface sif_i(input bit clk);
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
-    task read(Packet mon_pak,  mon_q[$], string mon);
+    task read();
+	@xa_mon_cb;
 
-	if(mon == "xa") begin
-		if(xa_mon_cb.xa_rd_s) begin
-			mon_pak.addr = xa_mon_cb.xa_addr;
-			mon_pak.op = READ;
+		/*this is the read task of the xa port. By having a while, till the read strobe is one, it creates the read object handel,
+loads the address and the type of operation coresponding to the object, waits a clock posedge without exiting the while and loads the value of the data obtained from sif. By checking again the read strobe
+without exiting the current clock cycle, is able to load multiple consecutive obtained read data from sif.
+Also the fork from the xa_monitor run task, divides the write process from the read one at the same port.*/
+	
+	CHEC_4_nRST : assert (DUT.rst_n == 0) begin/*general rst check, it should overrite the write too, when the wr strobe is on and a reset is done*/
+		$display("--%t [XA_MONITOR] Reset--\n", $time);
+	end
+	else begin
+		while (xa_mon_cb.xa_rd_s) begin
+			xa_mon_read_pak = new();
+			xa_mon_read_pak.addr = xa_mon_cb.xa_addr;
+			xa_mon_read_pak.op = READ;
+
+			@xa_mon_cb;
+
+			CHECK_4_nRST : assert (DUT.rst_n) begin/*check for nRST, this case deletes the last read value due to the reset*/
+				xa_mon_read_pak.data = xa_mon_cb.xa_data_rd;
+				xa_mon_q.push_back(xa_mon_read_pak);
 			
-			mon_q.push_back(mon_pak);
-		end
-		
-		if(xa_mon_q[xa_mon_q.size() - 1].op == READ) begin
-			xa_mon_q[xa_mon_q.size() - 1].data = xa_mon_cb.xa_data_rd;
-		
-			$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, mon_pak.data, mon_pak.addr);	
+				$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, xa_mon_read_pak.data, xa_mon_read_pak.addr);
+			end
+			else begin
+				$display("--%t [XA_MONITOR] Reset--\n", $time);
+			end
 		end
 	end
-
-
     endtask
-
-
 endinterface : sif_i
 
 

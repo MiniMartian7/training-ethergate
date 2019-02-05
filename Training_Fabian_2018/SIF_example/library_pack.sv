@@ -8,10 +8,8 @@ package packet;
     Packet op_pak;
     Packet op_q[$];
 
-    Packet xa_mon_pak, wa_mon_pak;
+    Packet xa_mon_pak, wa_mon_pak, xa_mon_read_pak;
     Packet xa_mon_q[$], wa_mon_q[$];
-
-    integer q_size;
 endpackage
 
 package generator;

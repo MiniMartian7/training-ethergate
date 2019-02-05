@@ -27,13 +27,14 @@ class XA_Monitor extends Monitor;
 
     task run();
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
-		forever begin
-			xa_mon_pak = new();
-
-			mon_i.write(xa_mon_pak, xa_mon_q, "xa");
-
-			mon_i.read(xa_mon_pak, xa_mon_q, "xa");/*send the current and previous packet for evaluation*/
-		end
+		fork
+			forever begin
+				mon_i.write(xa_mon_pak, xa_mon_q, "xa");
+			end
+			forever begin
+				mon_i.read();
+			end
+		join_none
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
     endtask
 endclass : XA_Monitor
@@ -45,8 +46,6 @@ class WA_Monitor extends Monitor;
     task run();
 	$display("--%t [WA_MONITOR] Run Task--\n", $time);
 		forever begin
-			wa_mon_pak = new();
-
 			mon_i.write(wa_mon_pak, wa_mon_q, "wa");
 		end
 	$display("--%t [WA_MONITOR] Run Task--\n", $time);
