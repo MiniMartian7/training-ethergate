@@ -10,6 +10,12 @@ package packet;
 
     Packet xa_mon_pak, wa_mon_pak, xa_mon_read_pak;
     Packet xa_mon_q[$], wa_mon_q[$];
+
+    /*Packet xa_ref_pak, wa_ref_pak;
+    Packet xa_ref_q[$], wa_ref_q[$];*/
+
+    [15:0]  xa_ref_val, wa_ref_val;
+    [15:0]  xa_ref_q[$], wa_ref_q[$];
 endpackage
 
 package generator;

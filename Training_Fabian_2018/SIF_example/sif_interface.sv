@@ -50,13 +50,23 @@ interface sif_i(input bit clk);
 
     endtask
 /*----------------------------------------------the send function is called from driver*/
-    task send(input logic [15:0] sent_data, sent_addr, input logic [2:0] flags);	
-	@driver_cb;
-	
-        DUT.xa_addr <= sent_addr;
-        DUT.xa_data_wr <= sent_data;
-        {DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} <= flags;
+    task send();	
+		foreach (op_q[i]) begin
+			@driver_cb;
+		
+			DUT.xa_addr <= op_q[i].addr;
+			DUT.xa_data_wr <= op_q[i].data;
+			{DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} <= op_q[i].op;
+		end
     endtask
+
+	task idle();
+		@driver_cb;
+		
+		DUT.xa_addr <= 0;
+		DUT.xa_data_wr <= 0;
+		{DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} <= IDLE;
+	endtask
 /*------------------------------------------------------------------------------------------------------*/
     
     task write(Packet mon_pak, mon_q[$], string mon);	
@@ -125,6 +135,27 @@ Also the fork from the xa_monitor run task, divides the write process from the r
 	end
     endtask
 endinterface : sif_i
+
+/*----------------------------------------------------------------------------------------------------- reference task*/
+
+task expected();
+	if(xa_mon_q.size() > 0 && {DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} == IDLE) begin
+		foreach(xa_mon_q[i]) begin
+			if(xa_mon_q[i].op == READ) begin /*only the read values for xa*/
+				//xa_ref_pak = new();
+				xa_ref_pak = {xa_mon_q[i].addr[15:9], xa_mon_q[i].addr[8]^xa_mon_q[i].addr[4], xa_mon_q[i].addr[7]^xa_mon_q[i].addr[5], xa_mon_q[i].addr[6:0]};
+				xa_ref_q.push_back(xa_ref_val);
+			end
+			else if(xa_mon_q[i].op == WRITE) begin /*only write values form xa to be compared with wa*/
+				///wa_ref_pak = new();
+				wa_ref_pak = xa_mon_q[i].data;
+				wa_ref_q.push_back(wa_ref_val);
+			end
+		end
+	end
+	else begin
+	end
+endtask
 
 
 /*Modports are only used in interface port and virtual interface declarations. They are not used to reference individual interface items.*/

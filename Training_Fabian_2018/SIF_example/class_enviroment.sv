@@ -22,8 +22,8 @@ class Enviroment;
 
         ev_gen = new();/*the generation of random transaction number is done in the constructor of the generator*/
         ev_driver = new(ev_i);
-	ev_xa_mon = new(ev_i);
-	ev_wa_mon = new(ev_i);
+	    ev_xa_mon = new(ev_i);
+	    ev_wa_mon = new(ev_i);
 	
         $display("--%t [ENVIROMENT] End Build Task--\n", $time);
     endfunction

@@ -24,21 +24,21 @@ class Driver;
     endtask
 */
     task run();
-        $display("--%t [DRIVER] Run Task--\n", $time);
 
-        driver_i.reset();/*initial reset*/
+        forever begin
+            $display("--%t [DRIVER] Run Task--\n", $time);
 
-     	foreach(op_q[i]) begin
+            driver_i.reset();/*initial reset*/
 		
-		driver_i.send(op_q[i].data, op_q[i].addr, op_q[i].op);
-		$display("--%t [DRIVER] Drive Packet done--\n", $time);
-	end
+		    driver_i.send();
+		    $display("--%t [DRIVER] Drive Packets done--\n", $time);
+            $display("--%t [DRIVER] IDLE--\n", $time);
 
-	driver_i.send(0,0,IDLE);//idle op
-	repeat(3) @driver_i.driver_cb;
-
-        $finish;
-
+            while(1) begin
+                driver_i.idle();
+            end
+        end
+        
         $display("--%t [DRIVER] End Run Task--\n", $time);
     endtask
 endclass : Driver

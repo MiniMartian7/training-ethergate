@@ -43,6 +43,7 @@ class WA_Monitor extends Monitor;
     function new(virtual sif_i mon_i);
         this.mon_i = mon_i;
     endfunction
+	
     task run();
 	$display("--%t [WA_MONITOR] Run Task--\n", $time);
 		forever begin
