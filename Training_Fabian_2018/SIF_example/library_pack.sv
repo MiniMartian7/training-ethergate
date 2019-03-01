@@ -1,5 +1,7 @@
 package lib;
     typedef enum logic [2:0] {WRITE = 3'b110, READ = 3'b101, IDLE = 3'b100, ILLEGAL = 3'b111, RESET = 3'b000} E_Operation;/*{rst_n, xa_wr_s, xa_rd_s}*/
+
+    bit[2:0] status = 0; /*detects the status of the DUT controled by the driver*/
 endpackage
 
 package packet;
@@ -14,8 +16,8 @@ package packet;
     /*Packet xa_ref_pak, wa_ref_pak;
     Packet xa_ref_q[$], wa_ref_q[$];*/
 
-    [15:0]  xa_ref_val, wa_ref_val;
-    [15:0]  xa_ref_q[$], wa_ref_q[$];
+    bit [15:0]  xa_ref_val, wa_ref_val;
+    bit [15:0]  xa_ref_q[$], wa_ref_q[$];
 endpackage
 
 package generator;
@@ -35,6 +37,12 @@ package monitor;
 
     XA_Monitor ev_xa_mon;
     WA_Monitor ev_wa_mon;
+endpackage
+
+package reference;
+    `include "class_reference.sv"
+
+    Reference ev_ref;
 endpackage
 
 package enviroment;

@@ -66,6 +66,8 @@ interface sif_i(input bit clk);
 		DUT.xa_addr <= 0;
 		DUT.xa_data_wr <= 0;
 		{DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} <= IDLE;
+		
+		status = IDLE;
 	endtask
 /*------------------------------------------------------------------------------------------------------*/
     
@@ -127,6 +129,7 @@ Also the fork from the xa_monitor run task, divides the write process from the r
 				xa_mon_q.push_back(xa_mon_read_pak);
 			
 				$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, xa_mon_read_pak.data, xa_mon_read_pak.addr);
+
 			end
 			else begin
 				$display("--%t [XA_MONITOR] Reset--\n", $time);
@@ -134,28 +137,9 @@ Also the fork from the xa_monitor run task, divides the write process from the r
 		end
 	end
     endtask
+
 endinterface : sif_i
 
-/*----------------------------------------------------------------------------------------------------- reference task*/
-
-task expected();
-	if(xa_mon_q.size() > 0 && {DUT.rst_n, DUT.xa_wr_s, DUT.xa_rd_s} == IDLE) begin
-		foreach(xa_mon_q[i]) begin
-			if(xa_mon_q[i].op == READ) begin /*only the read values for xa*/
-				//xa_ref_pak = new();
-				xa_ref_pak = {xa_mon_q[i].addr[15:9], xa_mon_q[i].addr[8]^xa_mon_q[i].addr[4], xa_mon_q[i].addr[7]^xa_mon_q[i].addr[5], xa_mon_q[i].addr[6:0]};
-				xa_ref_q.push_back(xa_ref_val);
-			end
-			else if(xa_mon_q[i].op == WRITE) begin /*only write values form xa to be compared with wa*/
-				///wa_ref_pak = new();
-				wa_ref_pak = xa_mon_q[i].data;
-				wa_ref_q.push_back(wa_ref_val);
-			end
-		end
-	end
-	else begin
-	end
-endtask
 
 
 /*Modports are only used in interface port and virtual interface declarations. They are not used to reference individual interface items.*/

@@ -7,6 +7,7 @@ If not, include the class in all classes need and use ifndef and define to preve
 import generator::*;
 import driver::*;
 import monitor::*;
+import reference::*;
 
 class Enviroment;
     virtual sif_i ev_i;
@@ -24,6 +25,7 @@ class Enviroment;
         ev_driver = new(ev_i);
 	    ev_xa_mon = new(ev_i);
 	    ev_wa_mon = new(ev_i);
+	ev_ref = new(ev_i);
 	
         $display("--%t [ENVIROMENT] End Build Task--\n", $time);
     endfunction
@@ -44,6 +46,7 @@ class Enviroment;
 		ev_driver.run();
 		ev_xa_mon.run();
 		ev_wa_mon.run();
+		ev_ref.run();
 	join
 	
         /*create a idle situation to be responsive to specific externela stimulus*/

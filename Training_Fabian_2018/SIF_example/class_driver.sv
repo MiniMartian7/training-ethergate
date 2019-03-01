@@ -25,7 +25,6 @@ class Driver;
 */
     task run();
 
-        forever begin
             $display("--%t [DRIVER] Run Task--\n", $time);
 
             driver_i.reset();/*initial reset*/
@@ -34,11 +33,7 @@ class Driver;
 		    $display("--%t [DRIVER] Drive Packets done--\n", $time);
             $display("--%t [DRIVER] IDLE--\n", $time);
 
-            while(1) begin
                 driver_i.idle();
-            end
-        end
-        
         $display("--%t [DRIVER] End Run Task--\n", $time);
     endtask
 endclass : Driver

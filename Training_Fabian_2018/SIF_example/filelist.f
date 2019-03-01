@@ -1,4 +1,5 @@
 library_pack.sv
+class_reference.sv
 class_packet.sv
 class_generator.sv
 class_driver.sv

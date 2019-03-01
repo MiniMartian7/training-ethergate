@@ -12,7 +12,7 @@ class Generator;
     integer nr_of_pak;
 
     parameter MIN_TRANS = 10;
-    parameter MAX_TRANS = 50;
+    parameter MAX_TRANS = 30;
 
     function new();/*the number of transaction is randomized in the constructor of the gen in the build task*/
         nr_of_pak = $urandom_range(MIN_TRANS, MAX_TRANS);
