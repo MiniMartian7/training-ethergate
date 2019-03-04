@@ -2,6 +2,8 @@ package lib;
     typedef enum logic [2:0] {WRITE = 3'b110, READ = 3'b101, IDLE = 3'b100, ILLEGAL = 3'b111, RESET = 3'b000} E_Operation;/*{rst_n, xa_wr_s, xa_rd_s}*/
 
     E_Operation state; /*detects the status of the DUT controled by the driver*/
+
+    integer check_sum = 0;
 endpackage
 
 package packet;
@@ -12,9 +14,6 @@ package packet;
 
     Packet xa_mon_pak, wa_mon_pak, xa_mon_read_pak;
     Packet xa_mon_q[$], wa_mon_q[$];
-
-    /*Packet xa_ref_pak, wa_ref_pak;
-    Packet xa_ref_q[$], wa_ref_q[$];*/
 
     bit [15:0]  xa_ref_val, wa_ref_val;
     bit [15:0]  xa_ref_q[$], wa_ref_q[$];

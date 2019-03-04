@@ -1,3 +1,4 @@
+# vsim +UVM_TESTNAME=sw_test -coverage -c tb_optimized 
 # //  Questa Sim-64
 # //  Version 10.2b linux_x86_64 May 16 2013
 # //
@@ -8,7 +9,6 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim +UVM_TESTNAME=sw_test -coverage tb_optimized 
 # Loading sv_std.std
 # Loading work.sif_top(fast)
 # Loading work.lib(fast)
@@ -26,46 +26,45 @@
 # Loading work.sif_test_sv_unit(fast)
 # Loading work.sif_test(fast)
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-run -all
 # --                   0 [ENVIROMENT] Build Task--
 # 
 # --                   0 [ENVIROMENT] End Build Task--
 # 
 # --                   0 [ENVIROMENT] Init Task--
 # 
-# --                   0 [GENERATOR] Main Task--
+# --                   0 [GENERATOR] Main--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           1|110|271b|98e3--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           1|110|271b|98e3--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           2|110|9589|9f5f--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           2|110|9589|9f5f--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           3|101|7ebb|e581--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           3|101|7ebb|e581--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           4|100|dee3|2f9f--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           4|100|dee3|2f9f--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           5|110|050e|57df--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           5|110|050e|57df--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           6|101|b8e4|e4ea--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           6|101|b8e4|e4ea--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           7|101|0b96|8ea9--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           7|101|0b96|8ea9--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           8|101|82be|d8b3--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           8|101|82be|d8b3--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::           9|101|25c5|5ddd--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           9|101|25c5|5ddd--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          10|000|1bcd|853e--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          10|000|1bcd|853e--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          11|100|f37f|e332--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          11|100|f37f|e332--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          12|110|1630|731e--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          12|110|1630|731e--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          13|110|e3ce|8165--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          13|110|e3ce|8165--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          14|110|f669|73b4--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          14|110|f669|73b4--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          15|110|98c6|159d--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          15|110|98c6|159d--
 # 
-# --                   0 [GENERATOR] End Main Task--
+# --                   0 [GENERATOR] End Main--
 # 
 # --                   0 [ENVIROMENT] End Init Task--
 # 
@@ -139,31 +138,9 @@ run -all
 # 
 # --           450000000 [REFERENCE] Main--
 # 
-# --           450000000 [REFERENCE] XA RD Ref Val | e581--
-# 
-# --           450000000 [REFERENCE] XA RD Ref Val | e46a--
-# 
-# --           450000000 [REFERENCE] XA RD Ref Val | 8e29--
-# 
-# --           450000000 [REFERENCE] XA RD Ref Val | d933--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | 271b--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | 9589--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | 050e--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | 1630--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | e3ce--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | f669--
-# 
-# --           450000000 [REFERENCE] WA WR Ref Val | 98c6--
-# 
 # --           450000000 [REFERENCE] End Main--
+# 
+# --           450000000 [ENVIROMENT] Check sum passed-- 
 # 
 # --           450000000 [ENVIROMENT] End Run Task--
 # 
-# 1
-# Simulation stop requested.

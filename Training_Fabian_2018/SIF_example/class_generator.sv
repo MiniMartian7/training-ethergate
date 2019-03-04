@@ -2,6 +2,7 @@
 `define GENERATOR
 
 import packet::*;
+import lib::*;
 
 /*the include on transaction class in enviroment should make available the class also to other classes in which it is used. This depends on the compiler. 
 If not, include the class in all classes need and use ifndef and define to prevent multiple initialisations of the class*/
@@ -19,7 +20,7 @@ class Generator;
     endfunction
 
     function void run();
-        $display("--%t [GENERATOR] Main Task--\n", $time);
+        $display("--%t [GENERATOR] Main--\n", $time);
 
         repeat (nr_of_pak) begin
             op_pak = new(); 
@@ -30,7 +31,7 @@ class Generator;
             op_q.push_back(op_pak); 
         end
 
-        $display("--%t [GENERATOR] End Main Task--\n", $time);
+        $display("--%t [GENERATOR] End Main--\n", $time);
     endfunction
 endclass : Generator
 `endif

@@ -13,12 +13,18 @@ class Packet;
 
     function new();
       /*srandom($urandom());generate seed*/
-      nr_pak ++;
-    endfunction
+      nr_pak++;
+    endfunction : new
+
+    function void compare(bit [15:0] data_ref);//comparation is done by comparing each READ and WRITE values with the reference
+	CHECK_WITH_REF : assert(this.data == data_ref) 
+		check_sum++; 
+	else $error("--%t [PACKET] Reference inequality--\n", $time);
+    endfunction : compare
 
     function void display();
-      $display("--%t [Packet] Number|Operation|Data|Address :: %d|%b|%h|%h--\n", $time, nr_pak, op, data, addr);
-    endfunction
+      $display("--%t [PACKET] Number|Operation|Data|Address :: %d|%b|%h|%h--\n", $time, nr_pak, op, data, addr);
+    endfunction : display
 
 	/*ar trebui sa existe o metoda de compare care sa fie folosita mai departe in la comparari*/
 endclass : Packet

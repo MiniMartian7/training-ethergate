@@ -4,6 +4,9 @@
 /*the include on transaction class in enviroment should make available the class also to other classes in which it is used. This depends on the compiler. 
 If not, include the class in all classes need and use ifndef and define to prevent multiple initializations of the class*/
 
+import packet::*;
+import lib::*;
+
 import generator::*;
 import driver::*;
 import monitor::*;
@@ -52,6 +55,9 @@ class Enviroment;
 
 	ev_ref.run();
 
+	CHECK_CHECK_SUM : assert(check_sum == (xa_ref_q.size() + wa_ref_q.size()))//check sum must be equal to the sum of reference values
+		$display("--%t [ENVIROMENT] Check sum passed-- \n", $time);		
+	else $error("--%t [ENVIROMENT] Check sum error-- \n", $time);
 	
         /*create a idle situation to be responsive to specific externela stimulus*/
         $display("--%t [ENVIROMENT] End Run Task--\n", $time);

@@ -25,6 +25,8 @@ class Reference;
 			if(xa_mon_q[i].op == READ) begin
 				xa_ref_val = {xa_mon_q[i].addr[15:9], xa_mon_q[i].addr[8]^xa_mon_q[i].addr[4], xa_mon_q[i].addr[7]^xa_mon_q[i].addr[5], xa_mon_q[i].addr[6:0]};
 				xa_ref_q.push_back(xa_ref_val);
+
+				xa_mon_q[i].compare(xa_ref_val);//compare for READ values, here the READ data calculated by sif is compared with the one previos manualy calculated
 			end
 
 			else begin
@@ -32,11 +34,13 @@ class Reference;
 				wa_ref_q.push_back(wa_ref_val);
 			end
 		end
+
+		foreach(wa_mon_q[i]) wa_mon_q[i].compare(wa_ref_q[i]);//compare for WRITE values
 			
 			/*reference display*/
-		foreach(xa_ref_q[i]) $display("--%t [REFERENCE] XA RD Ref Val | %h--\n", $time, xa_ref_q[i]);
+		//foreach(xa_ref_q[i]) $display("--%t [REFERENCE] XA RD Ref Val | %h--\n", $time, xa_ref_q[i]);
 
-		foreach(wa_ref_q[i]) $display("--%t [REFERENCE] WA WR Ref Val | %h--\n", $time, wa_ref_q[i]);
+		//foreach(wa_ref_q[i]) $display("--%t [REFERENCE] WA WR Ref Val | %h--\n", $time, wa_ref_q[i]);
 	end
 	else begin
 		$display("--%t [REFERENCE] No IDLE state--\n", $time);
