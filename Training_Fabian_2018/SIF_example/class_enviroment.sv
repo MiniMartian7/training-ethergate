@@ -42,12 +42,16 @@ class Enviroment;
         $display("--%t [ENVIROMENT] Run Task--\n", $time);
 
         /*the monitor and driver are parallel threads, fork...join_any*/
-	fork
-		ev_driver.run();
+
+	fork	
 		ev_xa_mon.run();
 		ev_wa_mon.run();
-		ev_ref.run();
-	join
+	join_none
+
+	ev_driver.run();
+
+	ev_ref.run();
+
 	
         /*create a idle situation to be responsive to specific externela stimulus*/
         $display("--%t [ENVIROMENT] End Run Task--\n", $time);

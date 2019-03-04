@@ -29,7 +29,7 @@ class XA_Monitor extends Monitor;
 	$display("--%t [XA_MONITOR] Run Task--\n", $time);
 		fork
 			forever begin
-				mon_i.write(xa_mon_pak, xa_mon_q, "xa");
+				mon_i.write("xa");
 			end
 			forever begin
 				mon_i.read();
@@ -47,7 +47,7 @@ class WA_Monitor extends Monitor;
     task run();
 	$display("--%t [WA_MONITOR] Run Task--\n", $time);
 		forever begin
-			mon_i.write(wa_mon_pak, wa_mon_q, "wa");
+			mon_i.write("wa");
 		end
 	$display("--%t [WA_MONITOR] Run Task--\n", $time);
     endtask

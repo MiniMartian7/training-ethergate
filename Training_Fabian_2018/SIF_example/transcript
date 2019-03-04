@@ -65,18 +65,6 @@ run -all
 # 
 # --                   0 [Packet] Number|Operation|Data|Address ::          15|110|98c6|159d--
 # 
-# --                   0 [Packet] Number|Operation|Data|Address ::          16|110|7a51|818f--
-# 
-# --                   0 [Packet] Number|Operation|Data|Address ::          17|110|8c1d|d423--
-# 
-# --                   0 [Packet] Number|Operation|Data|Address ::          18|100|7738|d797--
-# 
-# --                   0 [Packet] Number|Operation|Data|Address ::          19|110|c066|b269--
-# 
-# --                   0 [Packet] Number|Operation|Data|Address ::          20|111|8815|6478--
-# 
-# --                   0 [Packet] Number|Operation|Data|Address ::          21|110|bb0b|38f1--
-# 
 # --                   0 [GENERATOR] End Main Task--
 # 
 # --                   0 [ENVIROMENT] End Init Task--
@@ -92,12 +80,6 @@ run -all
 # --                   0 [XA_MONITOR] Run Task--
 # 
 # --                   0 [WA_MONITOR] Run Task--
-# 
-# --                   0 [REFERENCE] Main--
-# 
-# --                   0 [REFERENCE] Queue is empty--
-# 
-# --                   0 [REFERENCE] End Main--
 # 
 # --            10000000 [XA_MONITOR] Reset--
 # 
@@ -139,6 +121,10 @@ run -all
 # 
 # --           370000000 [XA_MONITOR] WR_Data|Addr::e3ce|8165--
 # 
+# --           390000000 [DRIVER] Drive Packets done--
+# 
+# --           390000000 [DRIVER] IDLE--
+# 
 # --           390000000 [WA_MONITOR] WR_Data|Addr::e3ce|8165--
 # 
 # --           390000000 [XA_MONITOR] WR_Data|Addr::f669|73b4--
@@ -149,31 +135,35 @@ run -all
 # 
 # --           430000000 [WA_MONITOR] WR_Data|Addr::98c6|159d--
 # 
-# --           430000000 [XA_MONITOR] WR_Data|Addr::7a51|818f--
+# --           450000000 [DRIVER] End Run Task--
 # 
-# --           450000000 [WA_MONITOR] WR_Data|Addr::7a51|818f--
+# --           450000000 [REFERENCE] Main--
 # 
-# --           450000000 [XA_MONITOR] WR_Data|Addr::8c1d|d423--
+# --           450000000 [REFERENCE] XA RD Ref Val | e581--
 # 
-# --           470000000 [WA_MONITOR] WR_Data|Addr::8c1d|d423--
+# --           450000000 [REFERENCE] XA RD Ref Val | e46a--
 # 
-# --           490000000 [XA_MONITOR] WR_Data|Addr::c066|b269--
+# --           450000000 [REFERENCE] XA RD Ref Val | 8e29--
 # 
-# --           510000000 [DRIVER] Drive Packets done--
+# --           450000000 [REFERENCE] XA RD Ref Val | d933--
 # 
-# --           510000000 [DRIVER] IDLE--
+# --           450000000 [REFERENCE] WA WR Ref Val | 271b--
 # 
-# --           510000000 [WA_MONITOR] WR_Data|Addr::c066|b269--
+# --           450000000 [REFERENCE] WA WR Ref Val | 9589--
 # 
-# --           510000000 [XA_MONITOR] WR_Data|Addr::8815|6478--
+# --           450000000 [REFERENCE] WA WR Ref Val | 050e--
 # 
-# --           530000000 [DRIVER] End Run Task--
+# --           450000000 [REFERENCE] WA WR Ref Val | 1630--
 # 
-# --           530000000 [WA_MONITOR] WR_Data|Addr::8815|6478--
+# --           450000000 [REFERENCE] WA WR Ref Val | e3ce--
 # 
-# --           530000000 [XA_MONITOR] RD_Data|Addr::65f8|6478--
+# --           450000000 [REFERENCE] WA WR Ref Val | f669--
 # 
-# --           530000000 [XA_MONITOR] WR_Data|Addr::bb0b|38f1--
+# --           450000000 [REFERENCE] WA WR Ref Val | 98c6--
 # 
-# --           550000000 [WA_MONITOR] WR_Data|Addr::bb0b|38f1--
+# --           450000000 [REFERENCE] End Main--
 # 
+# --           450000000 [ENVIROMENT] End Run Task--
+# 
+# 1
+# Simulation stop requested.

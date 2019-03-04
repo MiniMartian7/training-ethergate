@@ -28,9 +28,12 @@ class Driver;
             $display("--%t [DRIVER] Run Task--\n", $time);
 
             driver_i.reset();/*initial reset*/
-		
-		    driver_i.send();
-		    $display("--%t [DRIVER] Drive Packets done--\n", $time);
+
+	    foreach (op_q[i]) begin
+		driver_i.send(op_q[i].addr, op_q[i].data, op_q[i].op);
+	    end
+
+	    $display("--%t [DRIVER] Drive Packets done--\n", $time);
             $display("--%t [DRIVER] IDLE--\n", $time);
 
                 driver_i.idle();

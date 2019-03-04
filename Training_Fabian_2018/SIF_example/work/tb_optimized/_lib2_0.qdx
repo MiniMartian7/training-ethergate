@@ -1,6 +1,0 @@
-INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,19,'tb_optimized','vopt635n8d',630,strftime('%s','now'),267);
-INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);
-INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,20,'tb_optimized','voptjh2bk6',1014,strftime('%s','now'),267);
-INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);
-INSERT OR REPLACE INTO mainfiles (auxid,fileid,duname,name,size,time,flags) VALUES (2,21,'tb_optimized','voptsk71xj',1209,strftime('%s','now'),267);
-INSERT OR REPLACE INTO meta (key,value1,value2) VALUES ('page_inserts',2,IFNULL((SELECT value2 FROM meta WHERE key='page_inserts' AND value1=2), 0)+1);

@@ -19,30 +19,28 @@ class Reference;
 
     function void run();
 	$display("--%t [REFERENCE] Main--\n", $time);
-	
-	CHECK_4_VAL : assert(xa_mon_q.size() && status == IDLE) begin
-			foreach(xa_mon_q[i]) begin
-				if(xa_mon_q[i].op == READ) begin
-					xa_ref_val = {xa_mon_q[i].addr[15:9], xa_mon_q[i].addr[8]^xa_mon_q[i].addr[4], xa_mon_q[i].addr[7]^xa_mon_q[i].addr[5], xa_mon_q[i].addr[6:0]};
-					xa_ref_q.push_back(xa_ref_val);
-				end
-				else if(xa_mon_q[i].op == WRITE) begin
-					wa_ref_val = xa_mon_q[i].data;
-					xa_ref_q.push_back(wa_ref_val);
-				end
+
+	CHECK_4_STATE : assert(state == IDLE) begin
+		foreach(xa_mon_q[i]) begin
+			if(xa_mon_q[i].op == READ) begin
+				xa_ref_val = {xa_mon_q[i].addr[15:9], xa_mon_q[i].addr[8]^xa_mon_q[i].addr[4], xa_mon_q[i].addr[7]^xa_mon_q[i].addr[5], xa_mon_q[i].addr[6:0]};
+				xa_ref_q.push_back(xa_ref_val);
+			end
+
+			else begin
+				wa_ref_val = xa_mon_q[i].data;
+				wa_ref_q.push_back(wa_ref_val);
 			end
 		end
-		else begin
-			$display("--%t [REFERENCE] Queue is empty--\n", $time);
-		end
+			
+			/*reference display*/
+		foreach(xa_ref_q[i]) $display("--%t [REFERENCE] XA RD Ref Val | %h--\n", $time, xa_ref_q[i]);
 
-		foreach(xa_ref_q[i]) begin
-			$display("--%t [REFERNCE] XA RD Ref Val | %h--\n", $time, xa_ref_q[i]);
-		end
-
-		foreach(xa_ref_q[i]) begin
-			$display("--%t [REFERNCE] WA RD Ref Val | %h--\n", $time, wa_ref_q[i]);
-		end
+		foreach(wa_ref_q[i]) $display("--%t [REFERENCE] WA WR Ref Val | %h--\n", $time, wa_ref_q[i]);
+	end
+	else begin
+		$display("--%t [REFERENCE] No IDLE state--\n", $time);
+	end
 
 	$display("--%t [REFERENCE] End Main--\n", $time);
     endfunction

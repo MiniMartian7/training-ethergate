@@ -1,7 +1,7 @@
 package lib;
     typedef enum logic [2:0] {WRITE = 3'b110, READ = 3'b101, IDLE = 3'b100, ILLEGAL = 3'b111, RESET = 3'b000} E_Operation;/*{rst_n, xa_wr_s, xa_rd_s}*/
 
-    bit[2:0] status = 0; /*detects the status of the DUT controled by the driver*/
+    E_Operation state; /*detects the status of the DUT controled by the driver*/
 endpackage
 
 package packet;
