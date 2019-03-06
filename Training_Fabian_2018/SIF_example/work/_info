@@ -7,27 +7,52 @@ Z0 d/home/fabian/Documents/training-ethergate/Training_Fabian_2018/SIF_example
 !i10d 8192
 !i10e 25
 !i10f 100
-Xclass_driver_sv_unit
+Xclass_compare_sv_unit
 Z1 DXx6 sv_std 3 std 0 22 `a<MJET1=lN@jzbA7kHm;1
-Z2 DXx4 work 3 lib 0 22 F`Dih2;m2]i]zzTTnb9Q@1
-Z3 DXx4 work 6 packet 0 22 z5kb:ha7SoPfdIhd>mNa]0
-Z4 !s110 1551710549
-IRzI7_8Z>01HCD^4451A3F0
-VRzI7_8Z>01HCD^4451A3F0
+Z2 DXx4 work 3 lib 0 22 6I0g833o>M8LL<ZoY6<J43
+Z3 DXx4 work 6 packet 0 22 Q8z354z]a]Qkl@gamEU551
+Z4 !s110 1551872631
+IG=IKb`]mAST^6kF27fC::2
+VG=IKb`]mAST^6kF27fC::2
 S1
 Z5 d/home/fabian/Documents/training-ethergate/Training_Fabian_2018/SIF_example
-w1551700160
-8class_driver.sv
-Z6 Fclass_driver.sv
-L3 4
-Z7 OL;L;10.2b;57
+Z6 w1551872301
+8class_compare.sv
+Z7 Fclass_compare.sv
+L0 4
+Z8 OL;L;10.2b;57
 r1
 31
-Z8 !s108 1551710549.791322
-Z9 !s107 class_monitor.sv|sif.v|sif_top.sv|sif_interface.sv|sif_test.sv|class_enviroment.sv|class_driver.sv|class_generator.sv|class_packet.sv|class_reference.sv|library_pack.sv|
-Z10 !s90 -f|filelist.f|
-Z11 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
-!s100 ;POEI@`Iz@h?O>19CMPAo1
+Z9 !s108 1551872631.822037
+Z10 !s107 class_monitor.sv|sif.v|sif_top.sv|sif_interface.sv|sif_test.sv|class_enviroment.sv|class_driver.sv|class_generator.sv|class_packet.sv|class_reference.sv|class_compare.sv|library_pack.sv|
+Z11 !s90 -f|filelist.f|
+Z12 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!s100 0HMzWDk7;`5Cm@R;FEcDH2
+!i10b 1
+!i103 1
+!s85 0
+!i111 0
+Xclass_driver_sv_unit
+R1
+R2
+R3
+R4
+ILlC;TY]CZ2ghIDkM1GJ673
+VLlC;TY]CZ2ghIDkM1GJ673
+S1
+R5
+w1551700160
+8class_driver.sv
+Z13 Fclass_driver.sv
+L4 4
+R8
+r1
+31
+R9
+R10
+R11
+R12
+!s100 PVnK311D25ieUn[[;Q^I40
 !i10b 1
 !i103 1
 !s85 0
@@ -36,28 +61,29 @@ Xclass_enviroment_sv_unit
 R1
 R2
 R3
-Z12 DXx4 work 9 generator 0 22 ??0V`Nf_HEgUU_;i<S0j30
-Z13 DXx4 work 6 driver 0 22 kkR69O;<R1JBOISVmGE<^1
-Z14 DXx4 work 7 monitor 0 22 Fj?G>=U9J0Mc:7;1HZ=l;3
-Z15 DXx4 work 9 reference 0 22 HRkh5AD^Kiz<=T4nSR:kL2
+Z14 DXx4 work 9 generator 0 22 n<:^T03`]hknOZcfiTCNA3
+Z15 DXx4 work 6 driver 0 22 ZZYRoWif[]@zObc[AeSKz1
+Z16 DXx4 work 7 monitor 0 22 4@0Rf:Dd29KEK728V:C`N1
+Z17 DXx4 work 9 reference 0 22 UPknRh1zlamUPc?Sh9F?[2
+Z18 DXx4 work 7 compare 0 22 ZcM]k?FEAl9Am1z2IgbBJ2
 R4
-If[LSo?n0L72]W3T=aXY<i2
-Vf[LSo?n0L72]W3T=aXY<i2
+IPKnIfeWF3zekW88ILV_XT0
+VPKnIfeWF3zekW88ILV_XT0
 S1
 R5
-Z16 w1551710248
+Z19 w1551872620
 8class_enviroment.sv
-Z17 Fclass_enviroment.sv
-L4 7
-R7
+Z20 Fclass_enviroment.sv
+L5 7
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 a3OBEj9jJ9FnoiQTAm:hT2
+R12
 !i10b 1
+!s100 B9oF[nbkG[ZkL;R=S4km=0
 !i103 1
 !s85 0
 !i111 0
@@ -66,22 +92,22 @@ R1
 R2
 R3
 R4
-I4?4?YWI<KRdl8KIl<c6m51
-V4?4?YWI<KRdl8KIl<c6m51
+I5;d0o<Y5>JQ9?YB<`Jf1[0
+V5;d0o<Y5>JQ9?YB<`Jf1[0
 S1
 R5
 w1551708849
 8class_generator.sv
-Z18 Fclass_generator.sv
-L2 4
-R7
+Z21 Fclass_generator.sv
+L3 4
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 oQ`c_aMN8@b70GA9JP`cn1
+R12
+!s100 19DXlefWPa:]U]8[ne_010
 !i10b 1
 !i103 1
 !s85 0
@@ -90,22 +116,22 @@ Xclass_packet_sv_unit
 R1
 R2
 R4
-I`k13=?ezdmdmW;^gefB>60
-V`k13=?ezdmdmW;^gefB>60
+I]jT3adDf]9@<4ngiA52Mh3
+V]jT3adDf]9@<4ngiA52Mh3
 S1
 R5
-Z19 w1551710474
+w1551710474
 8class_packet.sv
-Z20 Fclass_packet.sv
-L1 4
-R7
+Z22 Fclass_packet.sv
+L2 4
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 z:NVk<O_dQjfCDh29`VG;0
+R12
+!s100 6f=T>eUahHzSXleY04TP81
 !i10b 1
 !i103 1
 !s85 0
@@ -115,42 +141,67 @@ R1
 R2
 R3
 R4
-IRNiUR`4[9OzH9g>K2=o783
-VRNiUR`4[9OzH9g>K2=o783
+I0[4YKe4W]B0z>inm[P7Bi0
+V0[4YKe4W]B0z>inm[P7Bi0
 S1
 R5
-Z21 w1551710539
+Z23 w1551872335
 8class_reference.sv
-Z22 Fclass_reference.sv
-L0 4
-R7
+Z24 Fclass_reference.sv
+L1 4
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 <5B1T8IE0;=XQHMUoQ^981
+R12
+!s100 CzT_[1;;oB3_>V7ikYO0X2
 !i10b 1
 !i103 1
+!s85 0
+!i111 0
+Xcompare
+R1
+R2
+R3
+R4
+IZcM]k?FEAl9Am1z2IgbBJ2
+VZcM]k?FEAl9Am1z2IgbBJ2
+S1
+R5
+R6
+Z25 8library_pack.sv
+Z26 Flibrary_pack.sv
+R7
+L0 52
+R8
+r1
+31
+R9
+R10
+R11
+R12
+!s100 7KljhKjHnd3F61H><_OAm0
+!i10b 1
 !s85 0
 !i111 0
 vdff16_en
 R4
 I<Co3?1c1k^8imV^41Y9:F1
-Z23 V`JN@9S9cnhjKRR_L]QIcM3
+Z27 V`JN@9S9cnhjKRR_L]QIcM3
 R5
-Z24 w1545314044
-Z25 8sif.v
-Z26 Fsif.v
+Z28 w1545314044
+Z29 8sif.v
+Z30 Fsif.v
 L0 60
-R7
+R8
 r1
 31
-R8
 R9
 R10
 R11
+R12
 !s100 5cALdoO?iBV1[gIz4;P=f0
 !i10b 1
 !s85 0
@@ -158,19 +209,19 @@ R11
 vdff_en
 R4
 I3NI28NUgcURR=MnAEKC9`3
-R23
+R27
 R5
-R24
-R25
-R26
+R28
+R29
+R30
 L0 48
-R7
+R8
 r1
 31
-R8
 R9
 R10
 R11
+R12
 !s100 NFe3EU3g^EgM1eLo@<NM=0
 !i10b 1
 !s85 0
@@ -180,23 +231,23 @@ R1
 R2
 R3
 R4
-IkkR69O;<R1JBOISVmGE<^1
-VkkR69O;<R1JBOISVmGE<^1
+IZZYRoWif[]@zObc[AeSKz1
+VZZYRoWif[]@zObc[AeSKz1
 S1
 R5
-Z27 w1551709036
-Z28 8library_pack.sv
-Z29 Flibrary_pack.sv
-R6
-L0 28
-R7
+Z31 w1551866243
+R25
+R26
+R13
+L0 33
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 67LUBE99oMdP0:7bO_nTM0
+R12
+!s100 ASD?E?JJhekP0=neoIn`S0
 !i10b 1
 !s85 0
 !i111 0
@@ -204,29 +255,30 @@ Xenviroment
 R1
 R2
 R3
-R12
-R13
 R14
 R15
+R16
+R17
+R18
 R4
-Ie7Z9P1^[Pn>XiTD9]QahM1
-Ve7Z9P1^[Pn>XiTD9]QahM1
+IO[=>n8ZML:?BQ5BR]YhlV0
+VO[=>n8ZML:?BQ5BR]YhlV0
 S1
 R5
-R16
-R28
-R29
-R17
-L0 47
-R7
+R19
+R25
+R26
+R20
+L0 58
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 J0i;<9ozOLPfk5aB;BJQ83
+R12
 !i10b 1
+!s100 BAWSgnTB7hOJ=0n0DdK<c1
 !s85 0
 !i111 0
 Xgenerator
@@ -234,45 +286,45 @@ R1
 R2
 R3
 R4
-I??0V`Nf_HEgUU_;i<S0j30
-V??0V`Nf_HEgUU_;i<S0j30
+In<:^T03`]hknOZcfiTCNA3
+Vn<:^T03`]hknOZcfiTCNA3
 S1
 R5
-R27
-R28
-R29
-R18
-L0 22
-R7
+R31
+R25
+R26
+R21
+L0 27
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 ]>RCdo^1HM3;9N=VA2`DB2
+R12
+!s100 ad7eQ>e[maVJ:<Azno3;>3
 !i10b 1
 !s85 0
 !i111 0
 Xlib
 R1
 R4
-IF`Dih2;m2]i]zzTTnb9Q@1
-VF`Dih2;m2]i]zzTTnb9Q@1
+I6I0g833o>M8LL<ZoY6<J43
+V6I0g833o>M8LL<ZoY6<J43
 S1
 R5
-R27
-R28
-R29
+R31
+R25
+R26
 L0 1
-R7
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 3M8]KJN@e:@60aR^RPC?m0
+R12
+!s100 I4bI]5ecgR2C[6n>;7d^81
 !i10b 1
 !s85 0
 !i111 0
@@ -281,23 +333,23 @@ R1
 R2
 R3
 R4
-IFj?G>=U9J0Mc:7;1HZ=l;3
-VFj?G>=U9J0Mc:7;1HZ=l;3
+I4@0Rf:Dd29KEK728V:C`N1
+V4@0Rf:Dd29KEK728V:C`N1
 S1
 R5
-R27
-R28
-R29
+R31
+R25
+R26
 Fclass_monitor.sv
-L0 34
-R7
+L0 39
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 3gk0[ji8S<9B7UGGOUd8=1
+R12
+!s100 k^A1B^cL[<YQ2Sz0S0PCm1
 !i10b 1
 !s85 0
 !i111 0
@@ -305,23 +357,23 @@ Xpacket
 R1
 R2
 R4
-Iz5kb:ha7SoPfdIhd>mNa]0
-Vz5kb:ha7SoPfdIhd>mNa]0
+IQ8z354z]a]Qkl@gamEU551
+VQ8z354z]a]Qkl@gamEU551
 S1
 R5
-R19
-R28
-R29
-R20
-L0 9
-R7
+R31
+R25
+R26
+R22
+L0 14
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 O=UW:@WTh^H;I<ij_c7KU2
+R12
+!s100 <E3=>;No0d>N6mccE;PP01
 !i10b 1
 !s85 0
 !i111 0
@@ -330,42 +382,42 @@ R1
 R2
 R3
 R4
-IHRkh5AD^Kiz<=T4nSR:kL2
-VHRkh5AD^Kiz<=T4nSR:kL2
+IUPknRh1zlamUPc?Sh9F?[2
+VUPknRh1zlamUPc?Sh9F?[2
 S1
 R5
-R21
-R28
-R29
-R22
-L0 41
-R7
+R23
+R25
+R26
+R24
+L0 46
+R8
 r1
 31
-R8
 R9
 R10
 R11
-!s100 M[<9B5n7EARe=jSj7;PCZ2
+R12
+!s100 SD^DVW5_X0foFK6_852:[1
 !i10b 1
 !s85 0
 !i111 0
 vsif
 R4
 IWITcM>jPP<JzIYfH;T@zX1
-R23
+R27
 R5
-R24
-R25
-R26
+R28
+R29
+R30
 L0 9
-R7
+R8
 r1
 31
-R8
 R9
 R10
 R11
+R12
 !s100 X75MmXk97YcUNMI]8SP8k0
 !i10b 1
 !s85 0
@@ -374,23 +426,23 @@ Ysif_i
 R1
 R2
 R3
-DXx4 work 21 sif_interface_sv_unit 0 22 A8bMoHC`jEoTz@0_<:W6T2
-R23
+DXx4 work 21 sif_interface_sv_unit 0 22 ]:dGd7:>IaIm?I1IA`26H2
+R27
 r1
 31
-IR=2`R`;[ic^hO^ERN?M_=1
+IbX2zO]i6EGdE5NjT69ka60
 S1
 R5
-Z30 w1551702159
-Z31 8sif_interface.sv
-Z32 Fsif_interface.sv
+Z32 w1551872286
+Z33 8sif_interface.sv
+Z34 Fsif_interface.sv
 L0 4
-R7
 R8
 R9
 R10
 R11
-!s100 Q2^<3l_d@8bojO55EHLn92
+R12
+!s100 ^E]aW[QG08MeQg@J2[Qf30
 !s105 sif_interface_sv_unit
 !s85 0
 !i10b 1
@@ -399,22 +451,22 @@ Xsif_interface_sv_unit
 R1
 R2
 R3
-VA8bMoHC`jEoTz@0_<:W6T2
+V]:dGd7:>IaIm?I1IA`26H2
 r1
 31
-IA8bMoHC`jEoTz@0_<:W6T2
+I]:dGd7:>IaIm?I1IA`26H2
 S1
 R5
-R30
-R31
 R32
+R33
+R34
 L0 1
-R7
 R8
 R9
 R10
 R11
-!s100 Shnc1fOQhiNFKm=P[[h]i2
+R12
+!s100 K88dhQ3>J0WMg1;S7;_[c1
 !s85 0
 !i10b 1
 !i103 1
@@ -423,27 +475,28 @@ vsif_test
 R1
 R2
 R3
-R12
-R13
 R14
 R15
-Z33 DXx4 work 10 enviroment 0 22 e7Z9P1^[Pn>XiTD9]QahM1
-DXx4 work 16 sif_test_sv_unit 0 22 2>fZ@@Vi3H>J3Lc8T7GnW2
-R23
+R16
+R17
+R18
+Z35 DXx4 work 10 enviroment 0 22 O[=>n8ZML:?BQ5BR]YhlV0
+DXx4 work 16 sif_test_sv_unit 0 22 S97hfW5jOY=IR5RlnA0F<2
+R27
 r1
 31
 IBENK018^@;ZPkd^ijlh7g3
 S1
 R5
-Z34 w1549374742
-Z35 8sif_test.sv
-Z36 Fsif_test.sv
+Z36 w1549374742
+Z37 8sif_test.sv
+Z38 Fsif_test.sv
 L0 3
-R7
 R8
 R9
 R10
 R11
+R12
 !s100 jkc50`@?F;gN@=Md3fd<U1
 !s105 sif_test_sv_unit
 !s85 0
@@ -453,27 +506,28 @@ Xsif_test_sv_unit
 R1
 R2
 R3
-R12
-R13
 R14
 R15
-R33
-V2>fZ@@Vi3H>J3Lc8T7GnW2
+R16
+R17
+R18
+R35
+VS97hfW5jOY=IR5RlnA0F<2
 r1
 31
-I2>fZ@@Vi3H>J3Lc8T7GnW2
+IS97hfW5jOY=IR5RlnA0F<2
 S1
 R5
-R34
-R35
 R36
-L5 1
-R7
+R37
+R38
+L6 1
 R8
 R9
 R10
 R11
-!s100 mz=QG07U[36VMhcF];TN32
+R12
+!s100 Vi2V7<JS<U2BgWbWRQOYg1
 !s85 0
 !i10b 1
 !i103 1
@@ -482,20 +536,20 @@ vsif_top
 R1
 R4
 InLLh;ak`:GW44Wimm:U4U1
-R23
+R27
 S1
 R5
 w1547650654
 8sif_top.sv
 Fsif_top.sv
 L0 6
-R7
+R8
 r1
 31
-R8
 R9
 R10
 R11
+R12
 !s100 Z@42ZhBP:ILMj3ADAfOF;3
 !s105 sif_top_sv_unit
 !i10b 1
@@ -503,7 +557,7 @@ R11
 !i111 0
 Ttb_optimized
 R4
-V`H1U=R8kXbWWKbe>mk[>`0
+VPnG`nGIg@J0KG_c>EJ2F?3
 04 7 4 work sif_top fast 0
 o+acc
 ntb_optimized

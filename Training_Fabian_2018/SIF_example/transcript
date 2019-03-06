@@ -18,6 +18,7 @@
 # Loading work.sif(fast)
 # Loading work.dff16_en(fast)
 # Loading work.dff_en(fast)
+# Loading work.compare(fast)
 # Loading work.reference(fast)
 # Loading work.monitor(fast)
 # Loading work.driver(fast)
@@ -34,35 +35,35 @@
 # 
 # --                   0 [GENERATOR] Main--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           1|110|271b|98e3--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           1|101|7ebb|e581--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           2|110|9589|9f5f--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           2|100|dee3|2f9f--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           3|101|7ebb|e581--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           3|110|050e|57df--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           4|100|dee3|2f9f--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           4|101|b8e4|e4ea--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           5|110|050e|57df--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           5|101|0b96|8ea9--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           6|101|b8e4|e4ea--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           6|101|82be|d8b3--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           7|101|0b96|8ea9--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           7|101|25c5|5ddd--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           8|101|82be|d8b3--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           8|000|1bcd|853e--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::           9|101|25c5|5ddd--
+# --                   0 [PACKET] Number|Operation|Data|Address ::           9|100|f37f|e332--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          10|000|1bcd|853e--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          10|110|1630|731e--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          11|100|f37f|e332--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          11|110|e3ce|8165--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          12|110|1630|731e--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          12|110|f669|73b4--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          13|110|e3ce|8165--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          13|110|98c6|159d--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          14|110|f669|73b4--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          14|110|7a51|818f--
 # 
-# --                   0 [PACKET] Number|Operation|Data|Address ::          15|110|98c6|159d--
+# --                   0 [PACKET] Number|Operation|Data|Address ::          15|110|8c1d|d423--
 # 
 # --                   0 [GENERATOR] End Main--
 # 
@@ -92,47 +93,47 @@
 # 
 # --            90000000 [INTERFACE] End Reset Task--
 # 
-# --           130000000 [XA_MONITOR] WR_Data|Addr::271b|98e3--
+# --           150000000 [XA_MONITOR] RD_Data|Addr::e581|e581--
 # 
-# --           150000000 [WA_MONITOR] WR_Data|Addr::271b|98e3--
+# --           170000000 [XA_MONITOR] WR_Data|Addr::050e|57df--
 # 
-# --           150000000 [XA_MONITOR] WR_Data|Addr::9589|9f5f--
+# --           190000000 [WA_MONITOR] WR_Data|Addr::050e|57df--
 # 
-# --           170000000 [WA_MONITOR] WR_Data|Addr::9589|9f5f--
+# --           210000000 [XA_MONITOR] RD_Data|Addr::e46a|e4ea--
 # 
-# --           190000000 [XA_MONITOR] RD_Data|Addr::e581|e581--
+# --           230000000 [XA_MONITOR] RD_Data|Addr::8e29|8ea9--
 # 
-# --           210000000 [XA_MONITOR] WR_Data|Addr::050e|57df--
+# --           250000000 [XA_MONITOR] RD_Data|Addr::d933|d8b3--
 # 
-# --           230000000 [WA_MONITOR] WR_Data|Addr::050e|57df--
+# --           270000000 [XA_MONITOR] Reset--
 # 
-# --           250000000 [XA_MONITOR] RD_Data|Addr::e46a|e4ea--
+# --           310000000 [XA_MONITOR] WR_Data|Addr::1630|731e--
 # 
-# --           270000000 [XA_MONITOR] RD_Data|Addr::8e29|8ea9--
+# --           330000000 [WA_MONITOR] WR_Data|Addr::1630|731e--
 # 
-# --           290000000 [XA_MONITOR] RD_Data|Addr::d933|d8b3--
+# --           330000000 [XA_MONITOR] WR_Data|Addr::e3ce|8165--
 # 
-# --           310000000 [XA_MONITOR] Reset--
+# --           350000000 [WA_MONITOR] WR_Data|Addr::e3ce|8165--
 # 
-# --           350000000 [XA_MONITOR] WR_Data|Addr::1630|731e--
+# --           350000000 [XA_MONITOR] WR_Data|Addr::f669|73b4--
 # 
-# --           370000000 [WA_MONITOR] WR_Data|Addr::1630|731e--
+# --           370000000 [WA_MONITOR] WR_Data|Addr::f669|73b4--
 # 
-# --           370000000 [XA_MONITOR] WR_Data|Addr::e3ce|8165--
+# --           370000000 [XA_MONITOR] WR_Data|Addr::98c6|159d--
 # 
 # --           390000000 [DRIVER] Drive Packets done--
 # 
 # --           390000000 [DRIVER] IDLE--
 # 
-# --           390000000 [WA_MONITOR] WR_Data|Addr::e3ce|8165--
+# --           390000000 [WA_MONITOR] WR_Data|Addr::98c6|159d--
 # 
-# --           390000000 [XA_MONITOR] WR_Data|Addr::f669|73b4--
+# --           390000000 [XA_MONITOR] WR_Data|Addr::7a51|818f--
 # 
-# --           410000000 [WA_MONITOR] WR_Data|Addr::f669|73b4--
+# --           410000000 [WA_MONITOR] WR_Data|Addr::7a51|818f--
 # 
-# --           410000000 [XA_MONITOR] WR_Data|Addr::98c6|159d--
+# --           410000000 [XA_MONITOR] WR_Data|Addr::8c1d|d423--
 # 
-# --           430000000 [WA_MONITOR] WR_Data|Addr::98c6|159d--
+# --           430000000 [WA_MONITOR] WR_Data|Addr::8c1d|d423--
 # 
 # --           450000000 [DRIVER] End Run Task--
 # 
@@ -140,7 +141,45 @@
 # 
 # --           450000000 [REFERENCE] End Main--
 # 
+# --           450000000 [COMPARE] Main--
+# 
+# --            450000000[COMPARE] The read value for address |5ddd| was lost in a reset operation--
+# 
+# --           450000000 [COMPARE] End Main--
+# 
+# --           450000000 [COMPARE] Main--
+# 
+# --           450000000 [COMPARE] End Main--
+# 
 # --           450000000 [ENVIROMENT] Check sum passed-- 
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           0 -> 050e--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           1 -> 1630--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           2 -> e3ce--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           3 -> f669--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           4 -> 98c6--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           5 -> 7a51--
+# 
+# --           450000000 [ENVIROMENT] Ref Mem poz:           6 -> 8c1d--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           0 -> 050e--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           1 -> 1630--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           2 -> e3ce--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           3 -> f669--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           4 -> 98c6--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           5 -> 7a51--
+# 
+# --           450000000 [ENVIROMENT] Actual Mem poz:           6 -> 8c1d--
 # 
 # --           450000000 [ENVIROMENT] End Run Task--
 # 

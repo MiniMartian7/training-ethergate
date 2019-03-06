@@ -4,6 +4,11 @@ package lib;
     E_Operation state; /*detects the status of the DUT controled by the driver*/
 
     integer check_sum = 0;
+
+    integer index = 0; //index for memories
+
+    bit[15:0] ref_mem[integer];
+    bit[15:0] actual_mem[integer];
 endpackage
 
 package packet;
@@ -12,11 +17,11 @@ package packet;
     Packet op_pak;
     Packet op_q[$];
 
-    Packet xa_mon_pak, wa_mon_pak, xa_mon_read_pak;
-    Packet xa_mon_q[$], wa_mon_q[$];
+    Packet xa_mon_wr_pak, wa_mon_pak, xa_mon_rd_pak;
+    Packet xa_mon_wr_q[$],xa_mon_rd_q[$], wa_mon_q[$];
 
-    bit [15:0]  xa_ref_val, wa_ref_val;
-    bit [15:0]  xa_ref_q[$], wa_ref_q[$];
+    Packet xa_ref_val, wa_ref_val;
+    Packet xa_ref_q[$], wa_ref_q[$];
 endpackage
 
 package generator;
@@ -42,6 +47,12 @@ package reference;
     `include "class_reference.sv"
 
     Reference ev_ref;
+endpackage
+
+package compare;
+    `include "class_compare.sv"
+
+    Compare ev_xa_comp, ev_wa_comp;
 endpackage
 
 package enviroment;

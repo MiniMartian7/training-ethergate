@@ -11,6 +11,7 @@ import generator::*;
 import driver::*;
 import monitor::*;
 import reference::*;
+import compare::*;
 
 class Enviroment;
     virtual sif_i ev_i;
@@ -25,10 +26,16 @@ class Enviroment;
         $display("--%t [ENVIROMENT] Build Task--\n", $time);
 
         ev_gen = new();/*the generation of random transaction number is done in the constructor of the generator*/
+
         ev_driver = new(ev_i);
-	    ev_xa_mon = new(ev_i);
-	    ev_wa_mon = new(ev_i);
+
+	ev_xa_mon = new(ev_i);
+	ev_wa_mon = new(ev_i);
+
 	ev_ref = new(ev_i);
+
+	ev_xa_comp = new(ev_i);
+	ev_wa_comp = new(ev_i);	
 	
         $display("--%t [ENVIROMENT] End Build Task--\n", $time);
     endfunction
@@ -55,9 +62,14 @@ class Enviroment;
 
 	ev_ref.run();
 
-	CHECK_CHECK_SUM : assert(check_sum == (xa_ref_q.size() + wa_ref_q.size()))//check sum must be equal to the sum of reference values
-		$display("--%t [ENVIROMENT] Check sum passed-- \n", $time);		
+	ev_xa_comp.run(xa_ref_q, xa_mon_rd_q);
+	ev_wa_comp.run(wa_ref_q, wa_mon_q);
+
+	CHECK_CHECK_SUM : assert(check_sum == (xa_ref_q.size() + wa_ref_q.size())) $display("--%t [ENVIROMENT] Check sum passed-- \n", $time);//check sum must be equal to the sum of reference values		
 	else $error("--%t [ENVIROMENT] Check sum error-- \n", $time);
+
+	foreach(ref_mem[key]) $display("--%t [ENVIROMENT] Ref Mem poz: %d -> %h--\n", $time, key, ref_mem[key]);
+	foreach(actual_mem[key]) $display("--%t [ENVIROMENT] Actual Mem poz: %d -> %h--\n", $time, key, ref_mem[key]);
 	
         /*create a idle situation to be responsive to specific externela stimulus*/
         $display("--%t [ENVIROMENT] End Run Task--\n", $time);

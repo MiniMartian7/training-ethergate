@@ -77,15 +77,15 @@ interface sif_i(input bit clk);
 	/*for the read process there is no need for reset check cause is done in the same cycle*/
 	if(mon == "xa") begin
 		if(xa_mon_cb.xa_wr_s) begin
-			xa_mon_pak = new();
+			xa_mon_wr_pak = new();
 
-			xa_mon_pak.addr = xa_mon_cb.xa_addr;
-			xa_mon_pak.data = xa_mon_cb.xa_data_wr;
-			xa_mon_pak.op = WRITE;
+			xa_mon_wr_pak.addr = xa_mon_cb.xa_addr;
+			xa_mon_wr_pak.data = xa_mon_cb.xa_data_wr;
+			xa_mon_wr_pak.op = WRITE;
 
-			xa_mon_q.push_back(xa_mon_pak);
+			xa_mon_wr_q.push_back(xa_mon_wr_pak);
 			
-			$display("--%t [XA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, xa_mon_pak.data, xa_mon_pak.addr);	
+			$display("--%t [XA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, xa_mon_wr_pak.data, xa_mon_wr_pak.addr);	
 		end
 	end
 	else if(mon == "wa") begin
@@ -99,6 +99,9 @@ interface sif_i(input bit clk);
 			wa_mon_q.push_back(wa_mon_pak);
 			
 			$display("--%t [WA_MONITOR] WR_Data|Addr::%h|%h--\n", $time, wa_mon_pak.data, wa_mon_pak.addr);	
+
+			actual_mem[index] = wa_mon_pak.data;//creating the actual mem with WR values from wa port
+			index++;
 		end
 	end
     endtask
@@ -118,20 +121,25 @@ Also the fork from the xa_monitor run task, divides the write process from the r
 	end
 	else begin
 		while (xa_mon_cb.xa_rd_s) begin
-			xa_mon_read_pak = new();
-			xa_mon_read_pak.addr = xa_mon_cb.xa_addr;
-			xa_mon_read_pak.op = READ;
+			xa_mon_rd_pak = new();
+			xa_mon_rd_pak.addr = xa_mon_cb.xa_addr;
 
 			@xa_mon_cb;
 
 			CHECK_4_nRST : assert (DUT.rst_n) begin/*check for nRST, this case deletes the last read value due to the reset*/
-				xa_mon_read_pak.data = xa_mon_cb.xa_data_rd;
-				xa_mon_q.push_back(xa_mon_read_pak);
+				xa_mon_rd_pak.op = READ;
+				xa_mon_rd_pak.data = xa_mon_cb.xa_data_rd;
+				xa_mon_rd_q.push_back(xa_mon_rd_pak);
 			
-				$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, xa_mon_read_pak.data, xa_mon_read_pak.addr);
+				$display("--%t [XA_MONITOR] RD_Data|Addr::%h|%h--\n", $time, xa_mon_rd_pak.data, xa_mon_rd_pak.addr);
 
 			end
 			else begin
+				/*load a reset object in the read q that hold the address of the read value which was reseted*/
+				xa_mon_rd_pak.op = RESET;
+				//xa_mon_rd_pak.addr = xa_mon_cb.xa_addr;this is wrong, there is no need for an update
+				xa_mon_rd_q.push_back(xa_mon_rd_pak);
+				
 				$display("--%t [XA_MONITOR] Reset--\n", $time);
 			end
 		end
