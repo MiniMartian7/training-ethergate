@@ -1,8 +1,12 @@
-class sif_env extends uvm_env;
-    `uvm_component_utils(sif_env);
+class enviroment extends uvm_env;
+    `uvm_component_utils(enviroment);
 
-    sif_agent xa_agnt_hdlr, wa_agnt_hdlr;
-    sif_agent_config xa_agnt_config_hdlr, wa_agnt_config_hdlr;
+    //Agent/s and Agent_Config/s handler/s
+    agent xa_agnt_hdlr, wa_agnt_hdlr;
+    agent_config xa_agnt_config_hdlr, wa_agnt_config_hdlr;
+
+    //Virtual Sequencer/s Handle/s -- method 2
+    virtual_sequencer v_seqr_hdlr;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -23,11 +27,23 @@ class sif_env extends uvm_env;
         xa_agent_config_hdlr = new(env_i, UVM_ACTIVE);
         wa_agent_config_hdlr = new(env_i, UVM_PASSIVE);
 
-        uvm_config_db#(sif_agent_config)::set(this, "xa_agnt_hdlr.*", "config", xa_agent_config_hdlr);
-        uvm_config_db#(sif_agent_config)::set(this, "wa_agnt_hdlr.*", "config", wa_agent_config_hdlr);
+        uvm_config_db#(agent_config)::set(this, "xa_agnt_hdlr.*", "config", xa_agent_config_hdlr);
+        uvm_config_db#(agent_config)::set(this, "wa_agnt_hdlr.*", "config", wa_agent_config_hdlr);
         
+        /*
         xa_agnt_hdlr = new("xa_agnt_hdlr", this);
         wa_agnt_hdlr = new("wa_agnt_hdlr", this);
+        */
+        xa_agnt_hdlr = agent::type_id::create("xa_agnt_hdlr");
+        wa_agnt_hdlr = agent::type_id::create("wa_agnt_hdlr");
 
-    endfunction: build_phase
-endclass : sif_env
+        v_seqr_hdlr = virtual_sequencer::type_id::create("v_seqr_hdlr"); //-- method 2 with v_seqr
+    endfunction: build_phase 
+    
+    function void class_scope::connect_phase(uvm_phase phase);
+        //super.connect_phase(phase);
+        v_seqr_hdlr.p_sequencer = xa_agnt_hdlr.agnt_seqr_hdlr; //-- method 2 with v_seqr
+        
+    endfunction : connect_phase
+    
+endclass : enviroment

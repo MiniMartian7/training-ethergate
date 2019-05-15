@@ -1,4 +1,4 @@
-class sif_agent_config;
+class agent_config;
         virtual sif_i agent_i;
         uvm_active_passive_enum is_active;//in the book is defined as is_active, but I didnt found a initial declaration in the UVM libraries
 
